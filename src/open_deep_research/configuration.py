@@ -15,6 +15,7 @@ class SearchAPI(Enum):
     OPENAI = "openai"
     TAVILY = "tavily"
     YOUSEARCH = "yousearch"
+    YOUDEEPSEARCH = "youdeepsearch"
     NONE = "none"
 
 class MCPConfig(BaseModel):
@@ -88,6 +89,7 @@ class Configuration(BaseModel):
                     {"label": "OpenAI Native Web Search", "value": SearchAPI.OPENAI.value},
                     {"label": "Anthropic Native Web Search", "value": SearchAPI.ANTHROPIC.value},
                     {"label": "You.com Search", "value": SearchAPI.YOUSEARCH.value},
+                    {"label": "You.com Deep Search", "value": SearchAPI.YOUDEEPSEARCH.value},
                     {"label": "None", "value": SearchAPI.NONE.value}
                 ]
             }

@@ -45,6 +45,11 @@ YOU_SEARCH_DESCRIPTION = (
     " and news results with markdown content. Use it to gather fresh information from"
     " across the public internet."
 )
+YOU_DEEP_SEARCH_DESCRIPTION = (
+    "A deep search engine powered by You.com that performs comprehensive research on"
+    " complex questions. Returns detailed answers with inline citations and source"
+    " results. Best for multi-faceted research questions that require thorough analysis."
+)
 @tool(description=TAVILY_SEARCH_DESCRIPTION)
 async def tavily_search(
     queries: List[str],
@@ -361,6 +366,133 @@ async def you_search_async(
         raise ToolException(str(errors[-1]))
 
     return successful_results
+
+async def you_deep_search_async(
+    search_queries: List[str],
+    search_effort: Literal["low", "medium", "high"] = "medium",
+    config: RunnableConfig = None,
+):
+    """Execute multiple You.com deep search queries asynchronously."""
+    if not search_queries:
+        raise ToolException("Please provide at least one search query.")
+
+    use_staging = use_you_deep_search_staging()
+    api_key = get_you_deep_search_api_key(config)
+    
+    if not api_key:
+        key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
+        raise ToolException(
+            f"You.com Deep Search API key is not configured. Set {key_name} or provide it via apiKeys."
+        )
+
+    headers = {
+        "Content-Type": "application/json",
+        "X-API-KEY": api_key,
+    }
+    base_url = (
+        "https://api-staging.you.com/v1/deep_search"
+        if use_staging
+        else "https://api.you.com/v1/deep_search"
+    )
+    # Timeout based on search_effort: low=30s, medium=60s, high=300s, with buffer
+    timeout_map = {"low": 35, "medium": 65, "high": 305}
+    timeout = aiohttp.ClientTimeout(total=timeout_map.get(search_effort, 65))
+
+    async with aiohttp.ClientSession(timeout=timeout) as session:
+        async def fetch(query: str):
+            payload = {
+                "query": query,
+                "search_effort": search_effort,
+            }
+            try:
+                async with session.post(base_url, headers=headers, json=payload) as response:
+                    if response.status != 200:
+                        error_text = await response.text()
+                        raise ToolException(
+                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]}"
+                        )
+                    return await response.json()
+            except aiohttp.ClientError as exc:
+                raise ToolException(
+                    f"YouDeepSearch request failed for '{query}': {str(exc)}"
+                ) from exc
+
+        responses = await asyncio.gather(
+            *[fetch(query) for query in search_queries], return_exceptions=True
+        )
+
+    successful_results = []
+    errors = []
+    for query, response in zip(search_queries, responses):
+        if isinstance(response, Exception):
+            logging.warning("YouDeepSearch query '%s' failed: %s", query, response)
+            errors.append(response)
+            continue
+        response["query"] = query
+        successful_results.append(response)
+
+    if not successful_results and errors:
+        raise ToolException(str(errors[-1]))
+
+    return successful_results
+
+@tool(description=YOU_DEEP_SEARCH_DESCRIPTION)
+async def you_deep_search(
+    queries: List[str],
+    search_effort: Annotated[Literal["low", "medium", "high"], InjectedToolArg] = "medium",
+    config: RunnableConfig = None,
+) -> str:
+    """Fetch and format deep search results from the You.com Deep Search API.
+    
+    Args:
+        queries: List of search queries to execute
+        search_effort: Controls how deeply the agent searches (low, medium, high)
+        config: Runtime configuration for API keys and model settings
+    
+    Returns:
+        Formatted string containing deep search results with answers and sources
+    """
+    if not queries:
+        raise ToolException("Please provide at least one search query.")
+
+    search_results = await you_deep_search_async(
+        queries,
+        search_effort=search_effort,
+        config=config,
+    )
+
+    if not search_results:
+        return (
+            "No valid search results found. Please try different search queries or use "
+            "a different search API."
+        )
+
+    # Format results from deep search API
+    formatted_output = "Deep search results: \n\n"
+    
+    for response in search_results:
+        answer = response.get("answer", "No answer provided.")
+        results = response.get("results", [])
+        
+        # Include the answer as the main content
+        if answer:
+            formatted_output += f"ANSWER:\n{answer}\n\n"
+        
+        # Format sources similar to format_search_results
+        for i, result in enumerate(results, start=1):
+            url = result.get("url", "Unknown URL")
+            title = result.get("title") or "Untitled Source"
+            snippets = result.get("snippets", [])
+            
+            # Combine snippets into content string
+            content = " ".join(snippets) if snippets else "No excerpts available."
+            
+            formatted_output += f"\n\n--- SOURCE {i}: {title} ---\n"
+            formatted_output += f"URL: {url}\n\n"
+            formatted_output += f"SUMMARY:\n{content}\n\n"
+            formatted_output += "\n\n" + "-" * 80 + "\n"
+
+    return formatted_output
 
 async def summarize_webpage(model: BaseChatModel, webpage_content: str) -> str:
     """Summarize webpage content using AI model with timeout protection.
@@ -759,6 +891,16 @@ async def get_search_tool(search_api: SearchAPI):
         }
         return [search_tool]
         
+    elif search_api == SearchAPI.YOUDEEPSEARCH:
+        # Configure You.com deep search tool with metadata
+        search_tool = you_deep_search
+        search_tool.metadata = {
+            **(search_tool.metadata or {}),
+            "type": "search",
+            "name": "web_search"
+        }
+        return [search_tool]
+        
     elif search_api == SearchAPI.NONE:
         # No search functionality configured
         return []
@@ -1135,3 +1277,35 @@ def get_you_search_api_key(config: RunnableConfig):
         return api_keys.get("YOU_API_KEY")
     else:
         return os.getenv("YOU_API_KEY")
+
+def use_you_deep_search_staging() -> bool:
+    """Check if staging environment should be used for You.com Deep Search.
+    
+    Returns:
+        True if USE_YOU_DEEP_SEARCH_STAGING environment variable is set to 'true', False otherwise
+    """
+    return os.getenv("USE_YOU_DEEP_SEARCH_STAGING", "false").lower() == "true"
+
+def get_you_deep_search_api_key(config: RunnableConfig):
+    """Get You.com Deep Search API key from environment or config.
+    
+    Uses staging API key if USE_YOU_DEEP_SEARCH_STAGING is enabled, otherwise uses production key.
+    
+    Args:
+        config: Runtime configuration for API key access
+        
+    Returns:
+        API key string if found, None otherwise
+    """
+    use_staging = use_you_deep_search_staging()
+    key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
+    
+    should_get_from_config = os.getenv("GET_API_KEYS_FROM_CONFIG", "false")
+    if should_get_from_config.lower() == "true":
+        config_dict = config or {}
+        api_keys = config_dict.get("configurable", {}).get("apiKeys", {})
+        if not api_keys:
+            return None
+        return api_keys.get(key_name)
+    else:
+        return os.getenv(key_name)
