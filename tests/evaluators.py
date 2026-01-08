@@ -1,50 +1,25 @@
 from typing import cast
 from pydantic import BaseModel, Field
-from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_anthropic import ChatAnthropic
 from open_deep_research.utils import get_today_str
 from tests.prompts import RELEVANCE_PROMPT, STRUCTURE_PROMPT, GROUNDEDNESS_PROMPT, OVERALL_QUALITY_PROMPT, CORRECTNESS_PROMPT, COMPLETENESS_PROMPT
-
-# Load environment variables before creating the model
-load_dotenv()
 
 eval_model = ChatOpenAI(
     model="gpt-4.1",
 )
 
 def _format_input_query(inputs: dict) -> str:
-    # Try to extract messages from various input formats
-    messages = None
-    
-    # Try direct messages format
-    if "messages" in inputs and isinstance(inputs["messages"], list):
-        messages = inputs["messages"]
-    
-    # Try nested inputs format
-    elif "inputs" in inputs and "messages" in inputs["inputs"] and isinstance(inputs["inputs"]["messages"], list):
-        messages = inputs["inputs"]["messages"]
-    
-    # If we have messages, format them
-    if messages and len(messages) > 0:
-        if len(messages) == 1:
-            return messages[0].get("content", "")
-        
-        role_to_string_format_map = {
-            "user": "<user_input>\n{content}\n</user_input>",
-            "assistant": "<assistant_follow_up>\n{content}\n</assistant_follow_up>",
-        }
-        
-        return "\n\n".join([role_to_string_format_map.get(message.get("role", "user"), "<user_input>\n{content}\n</user_input>").format(content=message.get("content", "")) for message in messages])
-    
-    # Try direct prompt format
-    if "prompt" in inputs:
-        prompt_value = inputs["prompt"]
-        if isinstance(prompt_value, str):
-            return prompt_value
-    
-    # Last resort: raise a helpful error
-    raise ValueError(f"Could not extract query from inputs in evaluator. Available keys: {list(inputs.keys())}. Input structure: {inputs}")
+    messages = inputs["messages"]
+    if len(messages) == 1:
+        return messages[0]["content"]
+
+    role_to_string_format_map = {
+        "user": "<user_input>\n{content}\n</user_input>",
+        "assistant": "<assistant_follow_up>\n{content}\n</assistant_follow_up>",
+    }
+
+    return "\n\n".join([role_to_string_format_map[message["role"]].format(content=message["content"]) for message in messages])
 
 
 class OverallQualityScore(BaseModel):
