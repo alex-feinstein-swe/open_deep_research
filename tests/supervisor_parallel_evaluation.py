@@ -27,7 +27,7 @@ async def target(inputs: dict):
     config["configurable"]["max_structured_output_retries"] = 3
     config["configurable"]["allow_clarification"] = False
     config["configurable"]["max_concurrent_research_units"] = 10
-    config["configurable"]["search_api"] = "tavily"     # NOTE: We use Tavily to stay consistent
+    config["configurable"]["search_api"] = "youdeepsearch"     # NOTE: We use Tavily to stay consistent
     config["configurable"]["max_researcher_iterations"] = 3
     config["configurable"]["max_react_tool_calls"] = 10
     config["configurable"]["summarization_model"] = "openai:gpt-4.1-nano"
