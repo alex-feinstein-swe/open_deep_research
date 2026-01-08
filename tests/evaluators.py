@@ -37,6 +37,12 @@ def _format_input_query(inputs: dict) -> str:
         
         return "\n\n".join([role_to_string_format_map.get(message.get("role", "user"), "<user_input>\n{content}\n</user_input>").format(content=message.get("content", "")) for message in messages])
     
+    # Try direct prompt format
+    if "prompt" in inputs:
+        prompt_value = inputs["prompt"]
+        if isinstance(prompt_value, str):
+            return prompt_value
+    
     # Last resort: raise a helpful error
     raise ValueError(f"Could not extract query from inputs in evaluator. Available keys: {list(inputs.keys())}. Input structure: {inputs}")
 
