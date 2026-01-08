@@ -369,7 +369,6 @@ async def you_search_async(
 
 async def you_deep_search_async(
     search_queries: List[str],
-    search_effort: Literal["low", "medium", "high"] = "medium",
     config: RunnableConfig = None,
 ):
     """Execute multiple You.com deep search queries asynchronously."""
@@ -394,15 +393,14 @@ async def you_deep_search_async(
         if use_staging
         else "https://api.you.com/v1/deep_search"
     )
-    # Timeout based on search_effort: low=30s, medium=60s, high=300s, with buffer
-    timeout_map = {"low": 35, "medium": 65, "high": 305}
-    timeout = aiohttp.ClientTimeout(total=timeout_map.get(search_effort, 65))
+    # Timeout for medium effort: 60s base + buffer = 130s
+    timeout = aiohttp.ClientTimeout(total=130)
 
     async with aiohttp.ClientSession(timeout=timeout) as session:
         async def fetch(query: str):
             payload = {
                 "query": query,
-                "search_effort": search_effort,
+                "search_effort": "medium",
             }
             try:
                 async with session.post(base_url, headers=headers, json=payload) as response:
@@ -439,14 +437,12 @@ async def you_deep_search_async(
 @tool(description=YOU_DEEP_SEARCH_DESCRIPTION)
 async def you_deep_search(
     queries: List[str],
-    search_effort: Annotated[Literal["low", "medium", "high"], InjectedToolArg] = "medium",
     config: RunnableConfig = None,
 ) -> str:
     """Fetch and format deep search results from the You.com Deep Search API.
     
     Args:
         queries: List of search queries to execute
-        search_effort: Controls how deeply the agent searches (low, medium, high)
         config: Runtime configuration for API keys and model settings
     
     Returns:
@@ -457,7 +453,6 @@ async def you_deep_search(
 
     search_results = await you_deep_search_async(
         queries,
-        search_effort=search_effort,
         config=config,
     )
 
