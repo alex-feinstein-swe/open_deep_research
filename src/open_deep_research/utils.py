@@ -412,23 +412,36 @@ async def you_deep_search_async(
                         response_headers = dict(response.headers)
                         
                         if response.status == 200:
-                            return await response.json()
+                            try:
+                                return await response.json()
+                            except Exception as json_exc:
+                                # JSON parsing errors should be retried
+                                error = ToolException(
+                                    f"YouDeepSearch request failed for '{query}' (JSON decode error): {str(json_exc)}"
+                                )
+                                # Continue to retry logic below
                         
-                        # Read error text once for both retry and final failure cases
-                        try:
-                            error_text = await response.text()
-                        except Exception as text_exc:
-                            error_text = f"<unable to read response body: {text_exc}>"
-                        
-                        # Create exception for non-200 status codes
-                        error = ToolException(
-                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Response Headers: {response_headers}]"
-                        )
+                        if error is None:
+                            # Read error text once for both retry and final failure cases
+                            try:
+                                error_text = await response.text()
+                            except Exception as text_exc:
+                                error_text = f"<unable to read response body: {text_exc}>"
+                            
+                            # Create exception for non-200 status codes
+                            error = ToolException(
+                                f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Response Headers: {response_headers}]"
+                            )
                             
                 except aiohttp.ClientError as exc:
                     # Convert network errors to ToolException
                     error = ToolException(
                         f"YouDeepSearch request failed for '{query}': {str(exc)}"
+                    )
+                except Exception as exc:
+                    # Catch any other unexpected exceptions and retry them
+                    error = ToolException(
+                        f"YouDeepSearch request failed for '{query}' (unexpected error): {str(exc)}"
                     )
                 
                 # Handle error (either from status code or network error)
