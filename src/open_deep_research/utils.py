@@ -1326,7 +1326,6 @@ def get_you_deep_search_api_key(config: RunnableConfig):
         API key string if found, None otherwise
     """
     use_staging = use_you_deep_search_staging()
-    print(f"use_staging: {use_staging}")
     key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
     
     should_get_from_config = os.getenv("GET_API_KEYS_FROM_CONFIG", "false")
