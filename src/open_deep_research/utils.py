@@ -345,7 +345,7 @@ async def you_search_async(
                     return await response.json()
             except aiohttp.ClientError as exc:
                 raise ToolException(
-                    f"YouSearch request failed for '{query}': {str(exc)}"
+                    f"YouSearch request failed for '{query}' due to client error: {str(exc)}"
                 ) from exc
 
         responses = await asyncio.gather(
@@ -404,13 +404,20 @@ async def you_deep_search_async(
             }
             try:
                 async with session.post(base_url, headers=headers, json=payload) as response:
+                    # Extract trace ID from response headers
+                    trace_id = response.headers.get("x-trace-id", "N/A")
+                    
                     if response.status != 200:
-                        error_text = await response.text()
+                        try:
+                            error_text = await response.text()
+                        except Exception as text_exc:
+                            error_text = f"<unable to read response body: {text_exc}>"
                         raise ToolException(
-                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]}"
+                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Trace ID: {trace_id}]"
                         )
                     return await response.json()
             except aiohttp.ClientError as exc:
+                # For ClientError, we don't have a response, so no trace ID available
                 raise ToolException(
                     f"YouDeepSearch request failed for '{query}': {str(exc)}"
                 ) from exc
