@@ -402,25 +402,51 @@ async def you_deep_search_async(
                 "query": query,
                 "search_effort": "medium",
             }
-            try:
-                async with session.post(base_url, headers=headers, json=payload) as response:
-                    # Extract trace ID from response headers
-                    trace_id = response.headers.get("x-trace-id", "N/A")
-                    
-                    if response.status != 200:
+            max_retries = 3
+            
+            for attempt in range(max_retries + 1):
+                error = None
+                try:
+                    async with session.post(base_url, headers=headers, json=payload) as response:
+                        # Get all response headers
+                        response_headers = dict(response.headers)
+                        
+                        if response.status == 200:
+                            return await response.json()
+                        
+                        # Read error text once for both retry and final failure cases
                         try:
                             error_text = await response.text()
                         except Exception as text_exc:
                             error_text = f"<unable to read response body: {text_exc}>"
-                        raise ToolException(
-                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Trace ID: {trace_id}]"
+                        
+                        # Create exception for non-200 status codes
+                        error = ToolException(
+                            f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Response Headers: {response_headers}]"
                         )
-                    return await response.json()
-            except aiohttp.ClientError as exc:
-                # For ClientError, we don't have a response, so no trace ID available
-                raise ToolException(
-                    f"YouDeepSearch request failed for '{query}': {str(exc)}"
-                ) from exc
+                            
+                except aiohttp.ClientError as exc:
+                    # Convert network errors to ToolException
+                    error = ToolException(
+                        f"YouDeepSearch request failed for '{query}': {str(exc)}"
+                    )
+                
+                # Handle error (either from status code or network error)
+                if error:
+                    if attempt < max_retries:
+                        # Exponential backoff: 1s, 2s, 4s
+                        wait_time = 2 ** attempt
+                        logging.warning(
+                            "YouDeepSearch request failed for '%s', retrying in %ds (attempt %d/%d): %s",
+                            query, wait_time, attempt + 1, max_retries + 1, str(error)
+                        )
+                        await asyncio.sleep(wait_time)
+                        continue
+                    else:
+                        # Final attempt failed - add attempt count to error message
+                        raise ToolException(
+                            f"YouDeepSearch request failed for '{query}' after {max_retries + 1} attempts: {str(error)}"
+                        ) from error
 
         responses = await asyncio.gather(
             *[fetch(query) for query in search_queries], return_exceptions=True
@@ -1300,6 +1326,7 @@ def get_you_deep_search_api_key(config: RunnableConfig):
         API key string if found, None otherwise
     """
     use_staging = use_you_deep_search_staging()
+    print(f"use_staging: {use_staging}")
     key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
     
     should_get_from_config = os.getenv("GET_API_KEYS_FROM_CONFIG", "false")
