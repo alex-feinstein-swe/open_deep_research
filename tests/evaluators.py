@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  # Load .env from project root before any other imports
+
 from typing import cast
 from pydantic import BaseModel, Field
 from langchain_openai import ChatOpenAI
@@ -10,6 +13,9 @@ eval_model = ChatOpenAI(
 )
 
 def _format_input_query(inputs: dict) -> str:
+    if "input" in inputs:
+        return inputs["input"]
+    
     messages = inputs["messages"]
     if len(messages) == 1:
         return messages[0]["content"]
