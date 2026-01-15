@@ -393,14 +393,13 @@ async def you_deep_search_async(
         if use_staging
         else "https://api.you.com/v1/deep_search"
     )
-    # Timeout for medium effort: 60s base + buffer = 130s
-    timeout = aiohttp.ClientTimeout(total=130)
+    timeout = aiohttp.ClientTimeout(total=1000)
 
     async with aiohttp.ClientSession(timeout=timeout) as session:
         async def fetch(query: str):
             payload = {
                 "query": query,
-                "search_effort": "medium",
+                "search_effort": "xhigh",
             }
             max_retries = 3
             
@@ -440,8 +439,26 @@ async def you_deep_search_async(
                     )
                 except Exception as exc:
                     # Catch any other unexpected exceptions and retry them
+                    # Extract detailed exception info
+                    exc_type = type(exc).__name__
+                    exc_module = type(exc).__module__
+                    exc_str = str(exc) if str(exc) else "<no message>"
+                    exc_repr = repr(exc)
+                    exc_args = exc.args if hasattr(exc, 'args') else None
+                    
+                    # Build detailed error message
+                    error_details = f"{exc_type}"
+                    if exc_module and exc_module != 'builtins':
+                        error_details += f" from {exc_module}"
+                    if exc_str and exc_str != "<no message>":
+                        error_details += f": {exc_str}"
+                    elif exc_args:
+                        error_details += f": args={exc_args}"
+                    else:
+                        error_details += f": {exc_repr}"
+                    
                     error = ToolException(
-                        f"YouDeepSearch request failed for '{query}' (unexpected error): {str(exc)}"
+                        f"YouDeepSearch request failed for '{query}' (unexpected error): {error_details}"
                     )
                 
                 # Handle error (either from status code or network error)
