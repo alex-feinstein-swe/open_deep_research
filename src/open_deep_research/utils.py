@@ -393,7 +393,7 @@ async def you_deep_search_async(
         if use_staging
         else "https://api.you.com/v1/deep_search"
     )
-    timeout = aiohttp.ClientTimeout(total=10000)
+    timeout = aiohttp.ClientTimeout(total=1000)
 
     async with aiohttp.ClientSession() as session:
         async def fetch(query: str):
