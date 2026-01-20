@@ -417,7 +417,7 @@ async def you_deep_search_async(
                     async with _you_deep_search_api_call_count_lock:
                         _you_deep_search_api_call_count += 1
                         if _you_deep_search_api_call_count % 10 == 0:
-                            print(f"You Deep Search API call count: {_you_deep_search_api_call_count}")
+                            logging.warning(f"You Deep Search API call count: {_you_deep_search_api_call_count}")
                     
                     async with session.post(base_url, headers=headers, json=payload, timeout=timeout) as response:
                         # Get all response headers
