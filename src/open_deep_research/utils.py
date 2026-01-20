@@ -34,6 +34,12 @@ from open_deep_research.prompts import summarize_webpage_prompt
 from open_deep_research.state import ResearchComplete, Summary
 
 ##########################
+# You Deep Search API Call Counter
+##########################
+_you_deep_search_api_call_count = 0
+_you_deep_search_api_call_count_lock = asyncio.Lock()
+
+##########################
 # Tavily Search Tool Utils
 ##########################
 TAVILY_SEARCH_DESCRIPTION = (
@@ -406,6 +412,13 @@ async def you_deep_search_async(
             for attempt in range(max_retries + 1):
                 error = None
                 try:
+                    # Increment and print API call counter (thread-safe)
+                    global _you_deep_search_api_call_count, _you_deep_search_api_call_count_lock
+                    async with _you_deep_search_api_call_count_lock:
+                        _you_deep_search_api_call_count += 1
+                        if _you_deep_search_api_call_count % 10 == 0:
+                            print(f"You Deep Search API call count: {_you_deep_search_api_call_count}")
+                    
                     async with session.post(base_url, headers=headers, json=payload, timeout=timeout) as response:
                         # Get all response headers
                         response_headers = dict(response.headers)
