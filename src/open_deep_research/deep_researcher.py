@@ -298,7 +298,8 @@ async def supervisor_tools(state: SupervisorState, config: RunnableConfig) -> Co
                     "researcher_messages": [
                         HumanMessage(content=tool_call["args"]["research_topic"])
                     ],
-                    "research_topic": tool_call["args"]["research_topic"]
+                    "research_topic": tool_call["args"]["research_topic"],
+                    "search_tool_calls_count": 0  # Initialize count for each researcher
                 }, config) 
                 for tool_call in allowed_conduct_research_calls
             ]
@@ -471,7 +472,12 @@ async def researcher_tools(state: ResearcherState, config: RunnableConfig) -> Co
     )
     
     if not has_tool_calls and not has_native_search:
-        return Command(goto="compress_research")
+        # Preserve the accumulated search_tool_calls_count when exiting early
+        current_count = state.get("search_tool_calls_count", 0)
+        return Command(
+            goto="compress_research",
+            update={"search_tool_calls_count": current_count}
+        )
     
     # Step 2: Handle other tool calls (search, MCP tools, etc.)
     tools = await get_all_tools(config)
@@ -651,6 +657,9 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
     cleared_state = {"notes": {"type": "override", "value": []}}
     findings = "\n".join(notes)
     
+    # Get search tool call count early to ensure we can print it even on errors
+    search_count = state.get("search_tool_calls_count", 0)
+    
     # Step 2: Configure the final report generation model
     configurable = Configuration.from_runnable_config(config)
     writer_model_config = {
@@ -681,7 +690,6 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
             ])
             
             # Print search tool call count after successful report generation
-            search_count = state.get("search_tool_calls_count", 0)
             print(f"Search tool calls for completed item: {search_count}")
             
             # Return successful report generation
@@ -700,6 +708,8 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
                     # First retry: determine initial truncation limit
                     model_token_limit = get_model_token_limit(configurable.final_report_model)
                     if not model_token_limit:
+                        # Print count even on error
+                        print(f"Search tool calls for completed item: {search_count}")
                         return {
                             "final_report": f"Error generating final report: Token limit exceeded, however, we could not determine the model's maximum context length. Please update the model map in deep_researcher/utils.py with this information. {e}",
                             "messages": [AIMessage(content="Report generation failed due to token limits")],
@@ -716,6 +726,8 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
                 continue
             else:
                 # Non-token-limit error: return error immediately
+                # Print count even on error
+                print(f"Search tool calls for completed item: {search_count}")
                 return {
                     "final_report": f"Error generating final report: {e}",
                     "messages": [AIMessage(content="Report generation failed due to an error")],
@@ -723,6 +735,8 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
                 }
     
     # Step 4: Return failure result if all retries exhausted
+    # Print count even on failure
+    print(f"Search tool calls for completed item: {search_count}")
     return {
         "final_report": "Error generating final report: Maximum retries exceeded",
         "messages": [AIMessage(content="Report generation failed after maximum retries")],
