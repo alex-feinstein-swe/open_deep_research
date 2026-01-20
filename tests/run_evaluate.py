@@ -17,7 +17,7 @@ evaluators = [eval_overall_quality, eval_relevance, eval_structure, eval_grounde
 # NOTE: Configure the right parameters for the experiment, these will be logged in the metadata
 max_structured_output_retries = 3
 allow_clarification = False
-max_concurrent_research_units = 10
+max_concurrent_research_units = 2
 search_api = "youdeepsearch" # NOTE: We use Tavily to stay consistent
 max_researcher_iterations = 6
 max_react_tool_calls = 10

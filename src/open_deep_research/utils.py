@@ -393,7 +393,7 @@ async def you_deep_search_async(
         if use_staging
         else "https://api.you.com/v1/deep_search"
     )
-    timeout = aiohttp.ClientTimeout(total=1000)
+    timeout = aiohttp.ClientTimeout(total=2000)
 
     async with aiohttp.ClientSession() as session:
         async def fetch(query: str):
@@ -406,7 +406,6 @@ async def you_deep_search_async(
             for attempt in range(max_retries + 1):
                 error = None
                 try:
-                    # Pass timeout explicitly to each request to ensure it applies per-request, not cumulatively
                     async with session.post(base_url, headers=headers, json=payload, timeout=timeout) as response:
                         # Get all response headers
                         response_headers = dict(response.headers)

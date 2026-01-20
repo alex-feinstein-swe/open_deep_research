@@ -257,7 +257,8 @@ async def supervisor_tools(state: SupervisorState, config: RunnableConfig) -> Co
             goto=END,
             update={
                 "notes": get_notes_from_tool_calls(supervisor_messages),
-                "research_brief": state.get("research_brief", "")
+                "research_brief": state.get("research_brief", ""),
+                "search_tool_calls_count": state.get("search_tool_calls_count", 0)
             }
         )
     
@@ -328,6 +329,14 @@ async def supervisor_tools(state: SupervisorState, config: RunnableConfig) -> Co
             
             if raw_notes_concat:
                 update_payload["raw_notes"] = [raw_notes_concat]
+            
+            # Aggregate search tool call counts from all research results
+            total_search_calls = sum(
+                observation.get("search_tool_calls_count", 0) 
+                for observation in tool_results
+            )
+            current_supervisor_count = state.get("search_tool_calls_count", 0)
+            update_payload["search_tool_calls_count"] = current_supervisor_count + total_search_calls
                 
         except Exception as e:
             # Handle research execution errors
@@ -337,7 +346,8 @@ async def supervisor_tools(state: SupervisorState, config: RunnableConfig) -> Co
                     goto=END,
                     update={
                         "notes": get_notes_from_tool_calls(supervisor_messages),
-                        "research_brief": state.get("research_brief", "")
+                        "research_brief": state.get("research_brief", ""),
+                        "search_tool_calls_count": state.get("search_tool_calls_count", 0)
                     }
                 )
     
@@ -472,6 +482,18 @@ async def researcher_tools(state: ResearcherState, config: RunnableConfig) -> Co
     
     # Execute all tool calls in parallel
     tool_calls = most_recent_message.tool_calls
+    
+    # Count search tool calls (only explicit tool calls, not native web search)
+    search_tool_names = {"tavily_search", "you_search", "you_deep_search", "web_search"}
+    search_call_count = sum(
+        1 for tool_call in tool_calls 
+        if tool_call.get("name") in search_tool_names
+    )
+    
+    # Total search calls for this iteration
+    total_search_calls = search_call_count
+    current_count = state.get("search_tool_calls_count", 0)
+    
     tool_execution_tasks = [
         execute_tool_safely(tools_by_name[tool_call["name"]], tool_call["args"], config) 
         for tool_call in tool_calls
@@ -495,17 +517,22 @@ async def researcher_tools(state: ResearcherState, config: RunnableConfig) -> Co
         for tool_call in most_recent_message.tool_calls
     )
     
+    update_payload = {
+        "researcher_messages": tool_outputs,
+        "search_tool_calls_count": current_count + total_search_calls
+    }
+    
     if exceeded_iterations or research_complete_called:
         # End research and proceed to compression
         return Command(
             goto="compress_research",
-            update={"researcher_messages": tool_outputs}
+            update=update_payload
         )
     
     # Continue research loop with tool results
     return Command(
         goto="researcher",
-        update={"researcher_messages": tool_outputs}
+        update=update_payload
     )
 
 async def compress_research(state: ResearcherState, config: RunnableConfig):
@@ -559,7 +586,8 @@ async def compress_research(state: ResearcherState, config: RunnableConfig):
             # Return successful compression result
             return {
                 "compressed_research": str(response.content),
-                "raw_notes": [raw_notes_content]
+                "raw_notes": [raw_notes_content],
+                "search_tool_calls_count": state.get("search_tool_calls_count", 0)
             }
             
         except Exception as e:
@@ -581,7 +609,8 @@ async def compress_research(state: ResearcherState, config: RunnableConfig):
     
     return {
         "compressed_research": "Error synthesizing research report: Maximum retries exceeded",
-        "raw_notes": [raw_notes_content]
+        "raw_notes": [raw_notes_content],
+        "search_tool_calls_count": state.get("search_tool_calls_count", 0)
     }
 
 # Researcher Subgraph Construction
@@ -650,6 +679,10 @@ async def final_report_generation(state: AgentState, config: RunnableConfig):
             final_report = await configurable_model.with_config(writer_model_config).ainvoke([
                 HumanMessage(content=final_report_prompt)
             ])
+            
+            # Print search tool call count after successful report generation
+            search_count = state.get("search_tool_calls_count", 0)
+            print(f"Search tool calls for completed item: {search_count}")
             
             # Return successful report generation
             return {
