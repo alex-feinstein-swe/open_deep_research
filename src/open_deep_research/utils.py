@@ -405,7 +405,7 @@ async def you_deep_search_async(
         async def fetch(query: str):
             payload = {
                 "query": query,
-                "search_effort": "xhigh",
+                "search_effort": "high",
             }
             max_retries = 3
             

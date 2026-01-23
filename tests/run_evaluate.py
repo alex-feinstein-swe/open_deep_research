@@ -4,6 +4,7 @@ load_dotenv()  # Load .env from project root before any other imports
 from langsmith import Client
 from tests.evaluators import eval_overall_quality, eval_relevance, eval_structure, eval_correctness, eval_groundedness, eval_completeness
 import asyncio
+import time
 from open_deep_research.deep_researcher import deep_researcher_builder
 from langgraph.checkpoint.memory import MemorySaver
 import uuid
@@ -17,7 +18,7 @@ evaluators = [eval_overall_quality, eval_relevance, eval_structure, eval_grounde
 # NOTE: Configure the right parameters for the experiment, these will be logged in the metadata
 max_structured_output_retries = 3
 allow_clarification = False
-max_concurrent_research_units = 2
+max_concurrent_research_units = 10
 search_api = "youdeepsearch" # NOTE: We use Tavily to stay consistent
 max_researcher_iterations = 6
 max_react_tool_calls = 10
@@ -88,5 +89,9 @@ async def main():
     )
 
 if __name__ == "__main__":
+    start_time = time.perf_counter()
     results = asyncio.run(main())
+    end_time = time.perf_counter()
+    elapsed_seconds = end_time - start_time
     print(results)
+    print(f"\nTotal execution time: {elapsed_seconds:.2f} seconds")
