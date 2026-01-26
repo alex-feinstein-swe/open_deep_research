@@ -2,9 +2,11 @@ from dotenv import load_dotenv
 load_dotenv()  # Load .env from project root before any other imports
 
 from langsmith import Client
-from tests.evaluators import eval_overall_quality, eval_relevance, eval_structure, eval_correctness, eval_groundedness, eval_completeness
+from tests.evaluators import eval_overall_quality, eval_relevance, eval_structure, eval_groundedness, eval_completeness
 import asyncio
 import time
+import argparse
+from typing import Optional, List
 from open_deep_research.deep_researcher import deep_researcher_builder
 from langgraph.checkpoint.memory import MemorySaver
 import uuid
@@ -63,10 +65,61 @@ async def target(
     )
     return final_state
 
-async def main():
+def get_evaluation_data(
+    client: Client,
+    dataset_name: str,
+    item_ids: Optional[List[str]] = None
+):
+    """
+    Get evaluation data, optionally filtered by item IDs.
+    
+    Args:
+        client: LangSmith client instance
+        dataset_name: Name of the dataset to evaluate
+        item_ids: Optional list of item IDs to filter. If None, returns dataset name for full evaluation.
+                  Can be metadata IDs (from dataset) or LangSmith example IDs.
+    
+    Returns:
+        Either a list of filtered Example objects or the dataset name string.
+    
+    Raises:
+        ValueError: If item_ids are provided but no matching examples are found.
+    """
+    if item_ids is None:
+        return dataset_name
+    
+    # Fetch the dataset to get examples
+    dataset = client.read_dataset(dataset_name=dataset_name)
+    
+    # Get all examples from the dataset
+    examples_gen = client.list_examples(dataset_id=dataset.id)
+    all_examples = list(examples_gen)
+    
+    # Filter examples by the provided IDs
+    # Support both metadata IDs and LangSmith example IDs
+    item_ids_str = [str(id) for id in item_ids]
+    filtered_examples = []
+    for ex in all_examples:
+        # Check if it matches by LangSmith example ID
+        if str(ex.id) in item_ids_str:
+            filtered_examples.append(ex)
+        # Check if it matches by metadata ID
+        elif ex.metadata and ex.metadata.get("id") is not None:
+            if str(ex.metadata.get("id")) in item_ids_str:
+                filtered_examples.append(ex)
+    
+    if not filtered_examples:
+        raise ValueError(f"No examples found matching the provided IDs: {item_ids}")
+    
+    print(f"Filtered to {len(filtered_examples)} examples from {len(all_examples)} total")
+    return filtered_examples
+
+async def main(item_ids: Optional[List[str]] = None):
+    data = get_evaluation_data(client, dataset_name, item_ids)
+    
     return await client.aevaluate(
         target,
-        data=dataset_name,
+        data=data,
         evaluators=evaluators,
         experiment_prefix=f"ODR GPT-5, You Deep Search",
         max_concurrency=5,
@@ -89,8 +142,30 @@ async def main():
     )
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description='Run evaluation on Deep Research Bench dataset',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+            Examples:
+            # Run on entire dataset
+            python tests/run_evaluate.py
+            
+            # Run on specific item IDs (metadata IDs)
+            python tests/run_evaluate.py --item-ids 1 2 3 4 5
+            
+            # Run on specific LangSmith example IDs
+            python tests/run_evaluate.py --item-ids abc123 def456
+        """
+    )
+    parser.add_argument(
+        '--item-ids',
+        nargs='+',
+        help='Specific item IDs to evaluate (space-separated). Can be metadata IDs or LangSmith example IDs.'
+    )
+    args = parser.parse_args()
+    
     start_time = time.perf_counter()
-    results = asyncio.run(main())
+    results = asyncio.run(main(item_ids=args.item_ids))
     end_time = time.perf_counter()
     elapsed_seconds = end_time - start_time
     print(results)
