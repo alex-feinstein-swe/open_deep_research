@@ -1,634 +1,0 @@
-View the evaluation results for experiment: 'ODR GPT-5, You Deep Search-7eeb5fde' at:
-https://smith.langchain.com/o/5e060a91-5a52-4268-99b6-6d62f946c356/datasets/95208dd2-f448-4323-9b8b-e49d076f6578/compare?selectedSessions=44360eca-ffa4-4e13-9e07-eefcb38460a2
-
-
-0it [00:00, ?it/s]WARNING:root:You Deep Search API call count: 10
-WARNING:root:You Deep Search API call count: 20
-WARNING:root:You Deep Search API call count: 30
-WARNING:root:You Deep Search API call count: 40
-WARNING:root:You Deep Search API call count: 50
-WARNING:root:You Deep Search API call count: 60
-WARNING:root:You Deep Search API call count: 70
-WARNING:root:You Deep Search API call count: 80
-1it [11:23, 683.96s/it]WARNING:root:YouDeepSearch request failed for '教育部 中小学 学生欺凌 暴力 治理 意见 2017 原文 2022 更新', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '教育部 中小学 学生欺凌 暴力 治理 意见 2017 原文 2022 更新' (status 502): <html>
-<head><title>502 Bad Gateway</title></head>
-<body>
-<center><h1>502 Bad Gateway</h1></center>
-<hr><center>cloudflare</center>
-</body>
-</html>
- [Response Headers: {'Server': 'cloudflare', 'Date': 'Fri, 23 Jan 2026 18:25:30 GMT', 'Content-Type': 'text/html', 'Content-Length': '155', 'Connection': 'keep-alive', 'CF-RAY': '9c2952f94dd30fd1-LAX'}]
-WARNING:root:You Deep Search API call count: 90
-WARNING:root:You Deep Search API call count: 100
-WARNING:root:You Deep Search API call count: 110
-WARNING:root:You Deep Search API call count: 120
-2it [25:14, 770.19s/it]WARNING:root:You Deep Search API call count: 130
-WARNING:root:You Deep Search API call count: 140
-3it [28:44, 514.19s/it]WARNING:root:You Deep Search API call count: 150
-WARNING:root:You Deep Search API call count: 160
-WARNING:root:You Deep Search API call count: 170
-WARNING:root:You Deep Search API call count: 180
-WARNING:root:You Deep Search API call count: 190
-WARNING:root:YouDeepSearch request failed for 'Sabesp non-revenue water reduction program 2016-2025 economic benefits annual report 20-F cost savings revenue gain', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Sabesp non-revenue water reduction program 2016-2025 economic benefits annual report 20-F cost savings revenue gain' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 200
-WARNING:root:You Deep Search API call count: 210
-WARNING:root:You Deep Search API call count: 220
-WARNING:root:YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 230
-4it [45:10, 700.56s/it]5it [46:49, 483.85s/it]WARNING:root:You Deep Search API call count: 240
-WARNING:root:You Deep Search API call count: 250
-6it [53:43, 460.04s/it]WARNING:root:You Deep Search API call count: 260
-WARNING:root:You Deep Search API call count: 270
-WARNING:root:You Deep Search API call count: 280
-WARNING:root:YouDeepSearch request failed for 'information-driven view planning active SLAM ICRA IROS Stachniss survey', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'information-driven view planning active SLAM ICRA IROS Stachniss survey' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 19:12:09 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6460', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2999470dfc3efd-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-7it [1:05:05, 532.45s/it]WARNING:root:You Deep Search API call count: 290
-WARNING:root:You Deep Search API call count: 300
-WARNING:root:You Deep Search API call count: 310
-WARNING:root:YouDeepSearch request failed for 'Sabesp non-revenue water reduction program 2016-2025 economic benefits annual report 20-F cost savings revenue gain', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'Sabesp non-revenue water reduction program 2016-2025 economic benefits annual report 20-F cost savings revenue gain' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 320
-WARNING:root:YouDeepSearch request failed for 'Bryson Sukkarieh information-theoretic exploration 2008 2009 IJRR pdf', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Bryson Sukkarieh information-theoretic exploration 2008 2009 IJRR pdf' (status 502): <html>
-<head><title>502 Bad Gateway</title></head>
-<body>
-<center><h1>502 Bad Gateway</h1></center>
-<hr><center>cloudflare</center>
-</body>
-</html>
- [Response Headers: {'Server': 'cloudflare', 'Date': 'Fri, 23 Jan 2026 19:23:22 GMT', 'Content-Type': 'text/html', 'Content-Length': '155', 'Connection': 'keep-alive', 'CF-RAY': '9c29a5ba9deee13e-LAX'}]
-WARNING:root:You Deep Search API call count: 330
-WARNING:root:You Deep Search API call count: 340
-WARNING:root:YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 350
-WARNING:root:YouDeepSearch request failed for '汪精卫 政权 研究 进展 综述 CSSCI 2010..2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '汪精卫 政权 研究 进展 综述 CSSCI 2010..2025' (unexpected error): TimeoutError: TimeoutError()
-8it [1:22:08, 688.69s/it]WARNING:root:You Deep Search API call count: 360
-9it [1:26:32, 556.06s/it]WARNING:root:You Deep Search API call count: 370
-WARNING:root:You Deep Search API call count: 380
-WARNING:root:You Deep Search API call count: 390
-WARNING:root:You Deep Search API call count: 400
-WARNING:root:You Deep Search API call count: 410
-WARNING:root:You Deep Search API call count: 420
-10it [1:45:37, 737.79s/it]WARNING:root:YouDeepSearch request failed for 'Singapore PUB smart water network leak detection economics annual report digital water savings 2016-2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Singapore PUB smart water network leak detection economics annual report digital water savings 2016-2025' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'American Water AMI rollout benefits leakage energy savings investor presentation 10-K 2016-2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'American Water AMI rollout benefits leakage energy savings investor presentation 10-K 2016-2025' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Water Corporation Perth desalination energy optimization benefits annual report 2016-2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Water Corporation Perth desalination energy optimization benefits annual report 2016-2025' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'EIB EBRD NRW performance-based contracts economic results Manila Maynilad Sabesp 2016-2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'EIB EBRD NRW performance-based contracts economic results Manila Maynilad Sabesp 2016-2025' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers', retrying in 4s (attempt 3/4): YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 430
-WARNING:root:You Deep Search API call count: 440
-WARNING:root:You Deep Search API call count: 450
-WARNING:root:You Deep Search API call count: 460
-11it [1:52:55, 646.14s/it]WARNING:root:You Deep Search API call count: 470
-WARNING:root:You Deep Search API call count: 480
-WARNING:root:You Deep Search API call count: 490
-WARNING:root:You Deep Search API call count: 500
-WARNING:root:YouDeepSearch request failed for 'Melting Away Israel trans film peer-reviewed article Camera Obscura or JCMS DOI', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Melting Away Israel trans film peer-reviewed article Camera Obscura or JCMS DOI' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:14:35 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6358', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '9c29f2ac6d152d61-LAX'}]
-WARNING:root:YouDeepSearch request failed for '粤海投资 年报 2023 海水淡化 直供 城市 供水 产能 珠海 珠三角 供水 占比', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '粤海投资 年报 2023 海水淡化 直供 城市 供水 产能 珠海 珠三角 供水 占比' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:14:35 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6358', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '9c29f1df68d4cba7-LAX'}]
-WARNING:root:YouDeepSearch request failed for 'Melting Away Israel trans film peer-reviewed article Camera Obscura or JCMS DOI', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'Melting Away Israel trans film peer-reviewed article Camera Obscura or JCMS DOI' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:15:38 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6358', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '9c29f5535aed2d61-LAX'}]
-WARNING:root:YouDeepSearch request failed for '粤海投资 年报 2023 海水淡化 直供 城市 供水 产能 珠海 珠三角 供水 占比', retrying in 2s (attempt 2/4): YouDeepSearch request failed for '粤海投资 年报 2023 海水淡化 直供 城市 供水 产能 珠海 珠三角 供水 占比' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:15:38 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6382', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '9c29f5535c1c515a-LAX'}]
-WARNING:root:YouDeepSearch request failed for '中国水务集团 年报 2024 NRW 漏损 智能表 远传 深圳水务 年报 2023 单位电耗 kWh/m3', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '中国水务集团 年报 2024 NRW 漏损 智能表 远传 深圳水务 年报 2023 单位电耗 kWh/m3' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:15:38 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6382', 'Connection': 'keep-alive', 'X-Frame-Options': 'SAMEORIGIN', 'Referrer-Policy': 'same-origin', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Server': 'cloudflare', 'CF-RAY': '9c29f1df6bf2a733-LAX'}]
-WARNING:root:You Deep Search API call count: 510
-12it [2:06:24, 695.56s/it]WARNING:root:You Deep Search API call count: 520
-WARNING:root:You Deep Search API call count: 530
-13it [2:16:32, 668.91s/it]WARNING:root:You Deep Search API call count: 540
-WARNING:root:You Deep Search API call count: 550
-WARNING:root:You Deep Search API call count: 560
-WARNING:root:You Deep Search API call count: 570
-WARNING:root:You Deep Search API call count: 580
-WARNING:root:You Deep Search API call count: 590
-WARNING:root:You Deep Search API call count: 600
-14it [2:19:34, 521.79s/it]WARNING:root:YouDeepSearch query 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' failed: YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' after 4 attempts: YouDeepSearch request failed for 'Diamond Sutra T235 chapter divisions CBETA section markers Kumārajīva 32 sections with line numbers' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 610
-WARNING:root:You Deep Search API call count: 620
-WARNING:root:You Deep Search API call count: 630
-15it [2:26:54, 497.42s/it]WARNING:root:You Deep Search API call count: 640
-WARNING:root:You Deep Search API call count: 650
-WARNING:root:YouDeepSearch request failed for 'sigma Vt random dopant fluctuation workfunction variability line-edge roughness fin geometry STI well proximity SRAM TED JSSC', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'sigma Vt random dopant fluctuation workfunction variability line-edge roughness fin geometry STI well proximity SRAM TED JSSC' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 20:42:21 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2a1d665bbc6d35-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:YouDeepSearch request failed for 'CFPS 2022 报告 收入 分布 社保 参保 覆盖 养老金 医疗 失业', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'CFPS 2022 报告 收入 分布 社保 参保 覆盖 养老金 医疗 失业' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 660
-16it [2:33:11, 461.03s/it]17it [2:33:34, 329.25s/it]WARNING:root:You Deep Search API call count: 670
-WARNING:root:You Deep Search API call count: 680
-WARNING:root:You Deep Search API call count: 690
-WARNING:root:You Deep Search API call count: 700
-WARNING:root:You Deep Search API call count: 710
-18it [2:47:12, 476.27s/it]WARNING:root:You Deep Search API call count: 720
-19it [2:52:38, 430.95s/it]WARNING:root:You Deep Search API call count: 730
-WARNING:root:You Deep Search API call count: 740
-20it [2:56:11, 365.70s/it]WARNING:root:You Deep Search API call count: 750
-WARNING:root:You Deep Search API call count: 760
-WARNING:root:YouDeepSearch request failed for 'Ecobee 2024 2025 smart thermostat heat pump control energy program press release', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Ecobee 2024 2025 smart thermostat heat pump control energy program press release' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 21:11:44 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2a485fbceacd33-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 770
-WARNING:root:You Deep Search API call count: 780
-WARNING:root:You Deep Search API call count: 790
-WARNING:root:YouDeepSearch request failed for 'ASTM F1980 accelerated aging Q10 Arrhenius packaging', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ASTM F1980 accelerated aging Q10 Arrhenius packaging' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 21:17:48 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6460', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2a515bca86c69d-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 800
-WARNING:root:YouDeepSearch request failed for 'NIFD 居民 部门 杠杆率 2015-2025 时间序列 报告', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'NIFD 居民 部门 杠杆率 2015-2025 时间序列 报告' (unexpected error): TimeoutError: TimeoutError()
-21it [3:11:44, 535.96s/it]WARNING:root:You Deep Search API call count: 810
-WARNING:root:You Deep Search API call count: 820
-WARNING:root:You Deep Search API call count: 830
-22it [3:17:16, 474.58s/it]WARNING:root:You Deep Search API call count: 840
-WARNING:root:You Deep Search API call count: 850
-WARNING:root:YouDeepSearch request failed for 'battery plant capex $/GWh China 2023 2024 CATL BYD LGES BloombergNEF report 2024 2025', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'battery plant capex $/GWh China 2023 2024 CATL BYD LGES BloombergNEF report 2024 2025' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 860
-WARNING:root:You Deep Search API call count: 870
-WARNING:root:You Deep Search API call count: 880
-WARNING:root:You Deep Search API call count: 890
-WARNING:root:YouDeepSearch request failed for 'Alibaba DAMO Academy Alibaba Quantum Lab 阿里巴巴 量子 实验室 论文 GitHub', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Alibaba DAMO Academy Alibaba Quantum Lab 阿里巴巴 量子 实验室 论文 GitHub' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 21:37:57 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2a6e69def9191b-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 900
-23it [3:28:45, 539.07s/it]WARNING:root:You Deep Search API call count: 910
-WARNING:root:You Deep Search API call count: 920
-WARNING:root:YouDeepSearch request failed for 'Global smart home market 2024-2028 forecast IDC Canalys Omdia Gartner size units revenue categories cameras thermostats lighting appliances', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Global smart home market 2024-2028 forecast IDC Canalys Omdia Gartner size units revenue categories cameras thermostats lighting appliances' (unexpected error): TimeoutError: TimeoutError()
-24it [3:33:30, 462.73s/it]WARNING:root:You Deep Search API call count: 930
-WARNING:root:You Deep Search API call count: 940
-25it [3:35:25, 358.41s/it]WARNING:root:You Deep Search API call count: 950
-WARNING:root:You Deep Search API call count: 960
-WARNING:root:You Deep Search API call count: 970
-WARNING:root:You Deep Search API call count: 980
-WARNING:root:You Deep Search API call count: 990
-WARNING:root:You Deep Search API call count: 1000
-WARNING:root:You Deep Search API call count: 1010
-26it [3:46:00, 441.50s/it]WARNING:root:You Deep Search API call count: 1020
-WARNING:root:You Deep Search API call count: 1030
-WARNING:root:You Deep Search API call count: 1040
-WARNING:root:You Deep Search API call count: 1050
-WARNING:root:You Deep Search API call count: 1060
-WARNING:root:You Deep Search API call count: 1070
-WARNING:root:You Deep Search API call count: 1080
-WARNING:root:You Deep Search API call count: 1090
-WARNING:root:You Deep Search API call count: 1100
-WARNING:root:You Deep Search API call count: 1110
-27it [3:55:59, 488.76s/it]WARNING:root:You Deep Search API call count: 1120
-WARNING:root:You Deep Search API call count: 1130
-28it [4:00:53, 430.21s/it]WARNING:root:You Deep Search API call count: 1140
-WARNING:root:You Deep Search API call count: 1150
-WARNING:root:You Deep Search API call count: 1160
-WARNING:root:You Deep Search API call count: 1170
-29it [4:08:43, 442.21s/it]WARNING:root:You Deep Search API call count: 1180
-WARNING:root:YouDeepSearch request failed for '学堂在线 AI 助教 LLM 助教 MOOC AI TA 使用 数据 2024 2025 官方', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '学堂在线 AI 助教 LLM 助教 MOOC AI TA 使用 数据 2024 2025 官方' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 22:22:38 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2ab0b98ac283ef-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 1190
-WARNING:root:You Deep Search API call count: 1200
-30it [4:16:27, 448.90s/it]WARNING:root:You Deep Search API call count: 1210
-WARNING:root:You Deep Search API call count: 1220
-31it [4:22:30, 422.99s/it]WARNING:root:You Deep Search API call count: 1230
-WARNING:root:You Deep Search API call count: 1240
-32it [4:26:31, 368.38s/it]WARNING:root:YouDeepSearch request failed for 'Medtronic Percept PC MRI guidelines manual labeling SAR B1+rms 1.5T 3T 2020 2021 2022 2023 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Medtronic Percept PC MRI guidelines manual labeling SAR B1+rms 1.5T 3T 2020 2021 2022 2023 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 1250
-WARNING:root:You Deep Search API call count: 1260
-WARNING:root:You Deep Search API call count: 1270
-WARNING:root:You Deep Search API call count: 1280
-33it [4:36:14, 432.78s/it]WARNING:root:You Deep Search API call count: 1290
-WARNING:root:You Deep Search API call count: 1300
-WARNING:root:You Deep Search API call count: 1310
-WARNING:root:You Deep Search API call count: 1320
-WARNING:root:YouDeepSearch request failed for 'Adjust 2025 Mobile app trends gaming retention D1 D7 D30 by genre', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Adjust 2025 Mobile app trends gaming retention D1 D7 D30 by genre' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 1330
-WARNING:root:You Deep Search API call count: 1340
-34it [4:45:26, 468.50s/it]35it [4:47:45, 369.67s/it]WARNING:root:You Deep Search API call count: 1350
-WARNING:root:You Deep Search API call count: 1360
-WARNING:root:You Deep Search API call count: 1370
-WARNING:root:You Deep Search API call count: 1380
-WARNING:root:You Deep Search API call count: 1390
-WARNING:root:You Deep Search API call count: 1400
-WARNING:root:YouDeepSearch request failed for 'Singapore Ministry of Education guidance on generative AI in schools 2023 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Singapore Ministry of Education guidance on generative AI in schools 2023 2024' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Fri, 23 Jan 2026 23:03:57 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6460', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2aed4b5e7ccb94-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 1410
-WARNING:root:YouDeepSearch request failed for 'PBoC Financial Stability Report systemic risk network China 2015..2024 site:pbc.gov.cn', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'PBoC Financial Stability Report systemic risk network China 2015..2024 site:pbc.gov.cn' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 1420
-WARNING:root:You Deep Search API call count: 1430
-WARNING:root:You Deep Search API call count: 1440
-WARNING:root:You Deep Search API call count: 1450
-WARNING:root:You Deep Search API call count: 1460
-WARNING:root:You Deep Search API call count: 1470
-36it [4:58:16, 448.20s/it]37it [4:58:21, 315.15s/it]WARNING:root:You Deep Search API call count: 1480
-WARNING:root:You Deep Search API call count: 1490
-WARNING:root:You Deep Search API call count: 1500
-38it [5:03:34, 314.61s/it]WARNING:root:You Deep Search API call count: 1510
-WARNING:root:You Deep Search API call count: 1520
-WARNING:root:You Deep Search API call count: 1530
-39it [5:07:14, 286.09s/it]WARNING:root:You Deep Search API call count: 1540
-WARNING:root:You Deep Search API call count: 1550
-WARNING:root:You Deep Search API call count: 1560
-WARNING:root:You Deep Search API call count: 1570
-40it [5:11:34, 278.28s/it]WARNING:root:You Deep Search API call count: 1580
-WARNING:root:You Deep Search API call count: 1590
-WARNING:root:You Deep Search API call count: 1600
-41it [5:18:43, 323.62s/it]WARNING:root:You Deep Search API call count: 1610
-WARNING:root:You Deep Search API call count: 1620
-WARNING:root:You Deep Search API call count: 1630
-WARNING:root:You Deep Search API call count: 1640
-WARNING:root:You Deep Search API call count: 1650
-WARNING:root:You Deep Search API call count: 1660
-WARNING:root:You Deep Search API call count: 1670
-42it [5:30:03, 430.25s/it]WARNING:root:You Deep Search API call count: 1680
-43it [5:32:19, 342.21s/it]WARNING:root:You Deep Search API call count: 1690
-WARNING:root:You Deep Search API call count: 1700
-WARNING:root:You Deep Search API call count: 1710
-WARNING:root:You Deep Search API call count: 1720
-44it [5:36:32, 315.31s/it]WARNING:root:You Deep Search API call count: 1730
-WARNING:root:You Deep Search API call count: 1740
-WARNING:root:You Deep Search API call count: 1750
-45it [5:42:59, 336.80s/it]WARNING:root:You Deep Search API call count: 1760
-WARNING:root:You Deep Search API call count: 1770
-WARNING:root:You Deep Search API call count: 1780
-WARNING:root:You Deep Search API call count: 1790
-WARNING:root:You Deep Search API call count: 1800
-WARNING:root:You Deep Search API call count: 1810
-WARNING:root:YouDeepSearch request failed for '中国税务年鉴 增值税 分行业 分地区 收入 情况 表 2021 2022 2023 ‘分税种分产业’ ‘分地区分产业’ VAT 房地产业 建筑业 省份', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '中国税务年鉴 增值税 分行业 分地区 收入 情况 表 2021 2022 2023 ‘分税种分产业’ ‘分地区分产业’ VAT 房地产业 建筑业 省份' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for '印花税 证券 印花税 分项 省级 税务 年鉴 分地区 分项目 收入 情况 表 ‘证券交易印花税’ 省级', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '印花税 证券 印花税 分项 省级 税务 年鉴 分地区 分项目 收入 情况 表 ‘证券交易印花税’ 省级' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Munger on buybacks ‘moral’ or ‘below intrinsic value’ Berkshire 2018 2019 2020 site:buffett.cnbc.com Daily Journal meeting buybacks dividends quote', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Munger on buybacks ‘moral’ or ‘below intrinsic value’ Berkshire 2018 2019 2020 site:buffett.cnbc.com Daily Journal meeting buybacks dividends quote' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Munger on technology Google monopoly network effects moats quote site:buffett.cnbc.com 2009 2011 2017 also DJCO 2019 transcript Google', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Munger on technology Google monopoly network effects moats quote site:buffett.cnbc.com 2009 2011 2017 also DJCO 2019 transcript Google' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Buffett on Munger ‘expanded my horizons’ See’s Candy 1972 ‘Phil Fisher’ site:buffett.cnbc.com', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Buffett on Munger ‘expanded my horizons’ See’s Candy 1972 ‘Phil Fisher’ site:buffett.cnbc.com' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Active world model exploration paper 2023 2024 code', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Active world model exploration paper 2023 2024 code' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'endovascular thrombectomy thrombus NETs CitH3 MPO-DNA MMP-9 S100A8 PF4 VWF outcomes mRS sICH reperfusion DNase stroke', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'endovascular thrombectomy thrombus NETs CitH3 MPO-DNA MMP-9 S100A8 PF4 VWF outcomes mRS sICH reperfusion DNase stroke' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 1820
-WARNING:root:YouDeepSearch request failed for 'NMPA China medical aesthetics regulation 2021 2023 advertising regulation dentists injectables', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'NMPA China medical aesthetics regulation 2021 2023 advertising regulation dentists injectables' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Provider density orthodontists per 100k by region WHO FDI AAO 2020 2024 aesthetic physicians density ISAPS 2022 2023 global survey', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Provider density orthodontists per 100k by region WHO FDI AAO 2020 2024 aesthetic physicians density ISAPS 2022 2023 global survey' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'European regulations dentists injectables country scope Germany France Italy Spain 2022 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'European regulations dentists injectables country scope Germany France Italy Spain 2022 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'MENA regulations botox fillers dentists UAE DHA HAAD DOH Saudi SCFHS scope of practice 2022 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'MENA regulations botox fillers dentists UAE DHA HAAD DOH Saudi SCFHS scope of practice 2022 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 1830
-WARNING:root:You Deep Search API call count: 1840
-WARNING:root:You Deep Search API call count: 1850
-WARNING:root:You Deep Search API call count: 1860
-WARNING:root:You Deep Search API call count: 1870
-WARNING:root:YouDeepSearch request failed for 'site:mof.gov.cn 财政收支情况 2018年 2017年 2016年 2015年 全国 一般公共预算 收入 印花税 证券交易印花税 土地相关税收 契税 土地增值税 房产税 城镇土地使用税 耕地占用税', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:mof.gov.cn 财政收支情况 2018年 2017年 2016年 2015年 全国 一般公共预算 收入 印花税 证券交易印花税 土地相关税收 契税 土地增值税 房产税 城镇土地使用税 耕地占用税' (status 500): {"errors":[{"status":"500","code":"internal_server_error","title":"Internal server error"}]} [Response Headers: {'Date': 'Sat, 24 Jan 2026 00:43:07 GMT', 'Content-Type': 'application/json', 'Content-Length': '92', 'Connection': 'keep-alive', 'CF-RAY': '9c2b7ade6ad4cb82-LAX', 'x-request-id': 'e7e4818c46799eb60aeba02339f80c64', 'x-correlation-id': '413b2ba7-61c4-48ec-bb3a-1990ae7c5ac3', 'x-trace-id': '00c6e183-423d-451c-ae00-185bcc224d65|2026-01-24T00:40:31.809482+00:00', 'strict-transport-security': 'max-age=31536000; includeSubDomains', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': '__cf_bm=xIZsc9Iac34uAZ9MJZ3DWGWM.I4wWSmCIHEW.CSAmT4-1769215387-1.0.1.1-rppxRQ6SAKKDW4nCCiHkHMJDXhJa.koht5GTty65Ie2n0dWXt_YeD2WY_KfU5r5JtT3004h59E8_NzBxS.IdgHe5.CyZlPzsV4K3fM1knLsbORP_IDc6VzUYWUlRGm1z; path=/; expires=Sat, 24-Jan-26 01:13:07 GMT; domain=.you.com; HttpOnly; Secure; SameSite=None', 'Server': 'cloudflare'}]
-WARNING:root:You Deep Search API call count: 1880
-WARNING:root:You Deep Search API call count: 1890
-WARNING:root:You Deep Search API call count: 1900
-46it [6:36:18, 1195.65s/it]WARNING:root:You Deep Search API call count: 1910
-47it [6:38:00, 867.34s/it] WARNING:root:You Deep Search API call count: 1920
-WARNING:root:You Deep Search API call count: 1930
-48it [6:42:15, 683.63s/it]WARNING:root:You Deep Search API call count: 1940
-WARNING:root:You Deep Search API call count: 1950
-WARNING:root:You Deep Search API call count: 1960
-49it [6:48:23, 588.95s/it]WARNING:root:You Deep Search API call count: 1970
-WARNING:root:You Deep Search API call count: 1980
-WARNING:root:You Deep Search API call count: 1990
-WARNING:root:You Deep Search API call count: 2000
-WARNING:root:You Deep Search API call count: 2010
-WARNING:root:YouDeepSearch request failed for 'MENA regulations botox fillers dentists UAE DHA HAAD DOH Saudi SCFHS scope of practice 2022 2024', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'MENA regulations botox fillers dentists UAE DHA HAAD DOH Saudi SCFHS scope of practice 2022 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2020
-50it [7:00:17, 626.48s/it]WARNING:root:You Deep Search API call count: 2030
-WARNING:root:You Deep Search API call count: 2040
-51it [7:04:41, 517.91s/it]WARNING:root:You Deep Search API call count: 2050
-WARNING:root:You Deep Search API call count: 2060
-WARNING:root:You Deep Search API call count: 2070
-WARNING:root:You Deep Search API call count: 2080
-WARNING:root:You Deep Search API call count: 2090
-WARNING:root:You Deep Search API call count: 2100
-WARNING:root:YouDeepSearch request failed for '中国居民膳食营养素参考摄入量 2013 DRI 2013 2023 更新 蛋白质 参考摄入量 中老年 50-64 65+ g/kg 体重 膳食纤维 适宜摄入量 AI 钙 维生素D 推荐摄入量 RNI 上限 UL 钠 饱和脂肪 糖 上限 中国营养学会 官方', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '中国居民膳食营养素参考摄入量 2013 DRI 2013 2023 更新 蛋白质 参考摄入量 中老年 50-64 65+ g/kg 体重 膳食纤维 适宜摄入量 AI 钙 维生素D 推荐摄入量 RNI 上限 UL 钠 饱和脂肪 糖 上限 中国营养学会 官方' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2110
-WARNING:root:You Deep Search API call count: 2120
-WARNING:root:You Deep Search API call count: 2130
-WARNING:root:You Deep Search API call count: 2140
-WARNING:root:You Deep Search API call count: 2150
-52it [7:17:29, 592.97s/it]WARNING:root:You Deep Search API call count: 2160
-53it [7:20:25, 467.77s/it]54it [7:22:38, 367.32s/it]WARNING:root:You Deep Search API call count: 2170
-55it [7:23:19, 269.34s/it]WARNING:root:You Deep Search API call count: 2180
-WARNING:root:You Deep Search API call count: 2190
-WARNING:root:You Deep Search API call count: 2200
-WARNING:root:You Deep Search API call count: 2210
-WARNING:root:You Deep Search API call count: 2220
-WARNING:root:You Deep Search API call count: 2230
-WARNING:root:YouDeepSearch request failed for 'ISA-95 IEC 62264 2021 site:isa.org site:iec.ch', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ISA-95 IEC 62264 2021 site:isa.org site:iec.ch' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 01:41:15 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2bd32dae2127d8-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 2240
-WARNING:root:You Deep Search API call count: 2250
-WARNING:root:You Deep Search API call count: 2260
-WARNING:root:You Deep Search API call count: 2270
-WARNING:root:You Deep Search API call count: 2280
-WARNING:root:You Deep Search API call count: 2290
-WARNING:root:YouDeepSearch request failed for '中国词学学会 理事名单', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '中国词学学会 理事名单' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 01:49:40 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6460', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2bdf9bfcecb84e-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 2300
-56it [7:39:01, 471.37s/it]WARNING:root:You Deep Search API call count: 2310
-WARNING:root:You Deep Search API call count: 2320
-57it [7:45:15, 441.89s/it]WARNING:root:You Deep Search API call count: 2330
-58it [7:50:28, 403.49s/it]WARNING:root:You Deep Search API call count: 2340
-WARNING:root:You Deep Search API call count: 2350
-WARNING:root:You Deep Search API call count: 2360
-WARNING:root:You Deep Search API call count: 2370
-WARNING:root:YouDeepSearch request failed for 'ISO 55001 上海 城投 排水', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ISO 55001 上海 城投 排水' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Japan COICOP correspondence FIES divisions to COICOP 2018 classification clothing food housing transport mapping 'imputed rent' exclusion', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Japan COICOP correspondence FIES divisions to COICOP 2018 classification clothing food housing transport mapping 'imputed rent' exclusion' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'National Survey of Family Income and Expenditure (NSFIE) 2019 2024 Japan age of household head expenditure by item elderly households table apparel food housing transportation PDF XLS', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'National Survey of Family Income and Expenditure (NSFIE) 2019 2024 Japan age of household head expenditure by item elderly households table apparel food housing transportation PDF XLS' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2380
-WARNING:root:You Deep Search API call count: 2390
-WARNING:root:You Deep Search API call count: 2400
-WARNING:root:You Deep Search API call count: 2410
-WARNING:root:You Deep Search API call count: 2420
-59it [8:09:34, 626.15s/it]WARNING:root:You Deep Search API call count: 2430
-WARNING:root:You Deep Search API call count: 2440
-WARNING:root:You Deep Search API call count: 2450
-WARNING:root:YouDeepSearch request failed for 'nitrite molybdate chromate silicate phosphate corrosion inhibitors Raman bands aqueous "Corrosion" journal DOI', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'nitrite molybdate chromate silicate phosphate corrosion inhibitors Raman bands aqueous "Corrosion" journal DOI' (unexpected error): TimeoutError: TimeoutError()
-60it [8:16:04, 555.24s/it]WARNING:root:You Deep Search API call count: 2460
-WARNING:root:You Deep Search API call count: 2470
-WARNING:root:You Deep Search API call count: 2480
-WARNING:root:You Deep Search API call count: 2490
-WARNING:root:You Deep Search API call count: 2500
-61it [8:32:00, 675.55s/it]WARNING:root:You Deep Search API call count: 2510
-WARNING:root:You Deep Search API call count: 2520
-WARNING:root:You Deep Search API call count: 2530
-WARNING:root:You Deep Search API call count: 2540
-WARNING:root:You Deep Search API call count: 2550
-WARNING:root:YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Litinski resource estimates ion traps surface code color code cycle time 2023 Beverland Brown qLDPC trapped ion cycle time estimates shuttling cooling measurement', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Litinski resource estimates ion traps surface code color code cycle time 2023 Beverland Brown qLDPC trapped ion cycle time estimates shuttling cooling measurement' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2560
-WARNING:root:YouDeepSearch request failed for 'DRAM 1-beta 1-gamma wordline molybdenum tungsten Ru announcements Micron Samsung SK hynix IEDM VLSI', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'DRAM 1-beta 1-gamma wordline molybdenum tungsten Ru announcements Micron Samsung SK hynix IEDM VLSI' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'nitrite molybdate chromate silicate phosphate corrosion inhibitors Raman bands aqueous "Corrosion" journal DOI', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'nitrite molybdate chromate silicate phosphate corrosion inhibitors Raman bands aqueous "Corrosion" journal DOI' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2570
-62it [8:53:33, 860.82s/it]WARNING:root:You Deep Search API call count: 2580
-WARNING:root:You Deep Search API call count: 2590
-WARNING:root:You Deep Search API call count: 2600
-WARNING:root:You Deep Search API call count: 2610
-63it [9:04:20, 796.54s/it]WARNING:root:You Deep Search API call count: 2620
-WARNING:root:You Deep Search API call count: 2630
-64it [9:09:49, 656.24s/it]WARNING:root:You Deep Search API call count: 2640
-WARNING:root:You Deep Search API call count: 2650
-WARNING:root:You Deep Search API call count: 2660
-WARNING:root:YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2670
-WARNING:root:You Deep Search API call count: 2680
-65it [9:27:39, 780.38s/it]WARNING:root:YouDeepSearch request failed for 'Contact resistance Rc specific contact resistivity ρc MoS2 analytical models thermionic emission field emission TFE Landauer NEGF 2D transfer length method DOI', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Contact resistance Rc specific contact resistivity ρc MoS2 analytical models thermionic emission field emission TFE Landauer NEGF 2D transfer length method DOI' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2690
-WARNING:root:You Deep Search API call count: 2700
-WARNING:root:You Deep Search API call count: 2710
-WARNING:root:YouDeepSearch request failed for 'IR bands nitrite, chromate, dichromate, molybdate, phosphate in water overview with DOIs', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'IR bands nitrite, chromate, dichromate, molybdate, phosphate in water overview with DOIs' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2720
-WARNING:root:You Deep Search API call count: 2730
-66it [9:37:26, 722.54s/it]WARNING:root:You Deep Search API call count: 2740
-WARNING:root:You Deep Search API call count: 2750
-WARNING:root:You Deep Search API call count: 2760
-WARNING:root:You Deep Search API call count: 2770
-WARNING:root:You Deep Search API call count: 2780
-WARNING:root:You Deep Search API call count: 2790
-WARNING:root:YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF', retrying in 4s (attempt 3/4): YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' (unexpected error): TimeoutError: TimeoutError()
-67it [9:50:52, 747.31s/it]WARNING:root:You Deep Search API call count: 2800
-WARNING:root:You Deep Search API call count: 2810
-WARNING:root:You Deep Search API call count: 2820
-68it [9:55:32, 607.37s/it]WARNING:root:You Deep Search API call count: 2830
-WARNING:root:You Deep Search API call count: 2840
-WARNING:root:You Deep Search API call count: 2850
-WARNING:root:You Deep Search API call count: 2860
-WARNING:root:You Deep Search API call count: 2870
-WARNING:root:You Deep Search API call count: 2880
-WARNING:root:You Deep Search API call count: 2890
-WARNING:root:You Deep Search API call count: 2900
-WARNING:root:You Deep Search API call count: 2910
-WARNING:root:You Deep Search API call count: 2920
-69it [10:12:13, 725.36s/it]WARNING:root:You Deep Search API call count: 2930
-WARNING:root:You Deep Search API call count: 2940
-WARNING:root:You Deep Search API call count: 2950
-WARNING:root:YouDeepSearch query 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' failed: YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' after 4 attempts: YouDeepSearch request failed for 'MLIT transport use elderly drivers license holding rate by age 75+ public transport usage survey white paper 2024 PDF' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'van der Waals gap effect on Schottky barrier and contact resistance 2D materials transmission through vdW gap studies DOI', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'van der Waals gap effect on Schottky barrier and contact resistance 2D materials transmission through vdW gap studies DOI' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2960
-WARNING:root:YouDeepSearch request failed for 'Disturbance observer bandwidth selection Ohnishi DOB rule of thumb 1/3 sampling or 1/5 of resonance', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Disturbance observer bandwidth selection Ohnishi DOB rule of thumb 1/3 sampling or 1/5 of resonance' (unexpected error): TimeoutError: TimeoutError()
-70it [10:35:54, 934.14s/it]WARNING:root:You Deep Search API call count: 2970
-WARNING:root:YouDeepSearch request failed for 'SWE-bench leaderboard 2025 2026 GPT-4.1 4o Claude 3.5 Gemini 2.0 Qwen2.5-Code DeepSeek-Coder R1 results; HumanEval++ 2025 2026; SWE-Dev benchmark results 2025 GitHub Autofix impact studies code repair fixes', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'SWE-bench leaderboard 2025 2026 GPT-4.1 4o Claude 3.5 Gemini 2.0 Qwen2.5-Code DeepSeek-Coder R1 results; HumanEval++ 2025 2026; SWE-Dev benchmark results 2025 GitHub Autofix impact studies code repair fixes' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2980
-WARNING:root:YouDeepSearch request failed for 'Elgin payment tablet specs site:elgin.com.br', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Elgin payment tablet specs site:elgin.com.br' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 2990
-71it [10:51:30, 934.59s/it]WARNING:root:You Deep Search API call count: 3000
-WARNING:root:You Deep Search API call count: 3010
-WARNING:root:You Deep Search API call count: 3020
-WARNING:root:YouDeepSearch request failed for 'IPSS 2023 population projections Japan age 65-74 75-84 85+ medium variant table', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'IPSS 2023 population projections Japan age 65-74 75-84 85+ medium variant table' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3030
-WARNING:root:You Deep Search API call count: 3040
-WARNING:root:You Deep Search API call count: 3050
-WARNING:root:You Deep Search API call count: 3060
-WARNING:root:You Deep Search API call count: 3070
-WARNING:root:You Deep Search API call count: 3080
-WARNING:root:You Deep Search API call count: 3090
-WARNING:root:YouDeepSearch request failed for 'Disturbance observer bandwidth selection Ohnishi DOB rule of thumb 1/3 sampling or 1/5 of resonance', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'Disturbance observer bandwidth selection Ohnishi DOB rule of thumb 1/3 sampling or 1/5 of resonance' (unexpected error): TimeoutError: TimeoutError()
-72it [11:08:46, 965.09s/it]WARNING:root:You Deep Search API call count: 3100
-WARNING:root:You Deep Search API call count: 3110
-WARNING:root:You Deep Search API call count: 3120
-WARNING:root:You Deep Search API call count: 3130
-WARNING:root:You Deep Search API call count: 3140
-WARNING:root:You Deep Search API call count: 3150
-WARNING:root:You Deep Search API call count: 3160
-WARNING:root:You Deep Search API call count: 3170
-WARNING:root:You Deep Search API call count: 3180
-WARNING:root:You Deep Search API call count: 3190
-73it [11:15:39, 799.33s/it]WARNING:root:YouDeepSearch request failed for 'SWE-bench leaderboard 2025 2026 GPT-4.1 4o Claude 3.5 Gemini 2.0 Qwen2.5-Code DeepSeek-Coder R1 results; HumanEval++ 2025 2026; SWE-Dev benchmark results 2025 GitHub Autofix impact studies code repair fixes', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'SWE-bench leaderboard 2025 2026 GPT-4.1 4o Claude 3.5 Gemini 2.0 Qwen2.5-Code DeepSeek-Coder R1 results; HumanEval++ 2025 2026; SWE-Dev benchmark results 2025 GitHub Autofix impact studies code repair fixes' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3200
-WARNING:root:You Deep Search API call count: 3210
-74it [11:19:39, 631.50s/it]WARNING:root:You Deep Search API call count: 3220
-WARNING:root:You Deep Search API call count: 3230
-WARNING:root:You Deep Search API call count: 3240
-75it [11:26:37, 567.56s/it]WARNING:root:You Deep Search API call count: 3250
-WARNING:root:YouDeepSearch request failed for 'prometheus scrape_series_added metric documentation introduced in v2.10 rate(scrape_series_added)', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'prometheus scrape_series_added metric documentation introduced in v2.10 rate(scrape_series_added)' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 05:41:08 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2d32f9b97a0f27-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 3260
-WARNING:root:You Deep Search API call count: 3270
-76it [11:32:55, 510.66s/it]WARNING:root:You Deep Search API call count: 3280
-WARNING:root:You Deep Search API call count: 3290
-WARNING:root:You Deep Search API call count: 3300
-WARNING:root:You Deep Search API call count: 3310
-WARNING:root:You Deep Search API call count: 3320
-WARNING:root:YouDeepSearch request failed for '家計調査 2024 年齢階級別 65～69 70～74 75～79 80～84 85歳以上 単身高齢者 世帯 高齢夫婦無職 世帯 支出', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '家計調査 2024 年齢階級別 65～69 70～74 75～79 80～84 85歳以上 単身高齢者 世帯 高齢夫婦無職 世帯 支出' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3330
-WARNING:root:You Deep Search API call count: 3340
-WARNING:root:You Deep Search API call count: 3350
-WARNING:root:You Deep Search API call count: 3360
-WARNING:root:You Deep Search API call count: 3370
-77it [11:46:02, 593.54s/it]WARNING:root:You Deep Search API call count: 3380
-WARNING:root:You Deep Search API call count: 3390
-WARNING:root:You Deep Search API call count: 3400
-78it [11:48:29, 459.66s/it]WARNING:root:You Deep Search API call count: 3410
-WARNING:root:You Deep Search API call count: 3420
-WARNING:root:You Deep Search API call count: 3430
-WARNING:root:You Deep Search API call count: 3440
-WARNING:root:You Deep Search API call count: 3450
-WARNING:root:You Deep Search API call count: 3460
-WARNING:root:You Deep Search API call count: 3470
-79it [11:59:51, 526.36s/it]WARNING:root:You Deep Search API call count: 3480
-WARNING:root:You Deep Search API call count: 3490
-WARNING:root:You Deep Search API call count: 3500
-WARNING:root:You Deep Search API call count: 3510
-WARNING:root:YouDeepSearch request failed for 'mmBody dataset radar RGB-D human pose dataset mmBody 2020 2021 ICCV CVPR', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'mmBody dataset radar RGB-D human pose dataset mmBody 2020 2021 ICCV CVPR' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 06:19:54 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2d6bc039bd7db7-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:YouDeepSearch request failed for '家計調査 2024 年齢階級別 65～69 70～74 75～79 80～84 85歳以上 単身高齢者 世帯 高齢夫婦無職 世帯 支出', retrying in 2s (attempt 2/4): YouDeepSearch request failed for '家計調査 2024 年齢階級別 65～69 70～74 75～79 80～84 85歳以上 単身高齢者 世帯 高齢夫婦無職 世帯 支出' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3520
-WARNING:root:You Deep Search API call count: 3530
-WARNING:root:You Deep Search API call count: 3540
-80it [12:16:31, 668.55s/it]WARNING:root:You Deep Search API call count: 3550
-WARNING:root:You Deep Search API call count: 3560
-WARNING:root:You Deep Search API call count: 3570
-WARNING:root:YouDeepSearch request failed for 'site:who.int school physical activity policy recommendations 2021 Global Standards for Health-promoting Schools WHO UNICEF', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:who.int school physical activity policy recommendations 2021 Global Standards for Health-promoting Schools WHO UNICEF' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3580
-WARNING:root:YouDeepSearch request failed for 'IFSWF data membership list and AUM 2024 site', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'IFSWF data membership list and AUM 2024 site' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 06:34:13 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2d80e16abf0ffb-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 3590
-WARNING:root:You Deep Search API call count: 3600
-WARNING:root:You Deep Search API call count: 3610
-WARNING:root:You Deep Search API call count: 3620
-WARNING:root:YouDeepSearch request failed for '腾讯音乐 2023 年度 报告 订阅 数 收入 分成 比例 B站 爱奇艺 财报 中文 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '腾讯音乐 2023 年度 报告 订阅 数 收入 分成 比例 B站 爱奇艺 财报 中文 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3630
-WARNING:root:You Deep Search API call count: 3640
-WARNING:root:You Deep Search API call count: 3650
-81it [12:28:25, 682.08s/it]WARNING:root:You Deep Search API call count: 3660
-WARNING:root:You Deep Search API call count: 3670
-82it [12:34:42, 590.41s/it]83it [12:35:42, 431.53s/it]WARNING:root:You Deep Search API call count: 3680
-WARNING:root:You Deep Search API call count: 3690
-WARNING:root:You Deep Search API call count: 3700
-WARNING:root:You Deep Search API call count: 3710
-WARNING:root:You Deep Search API call count: 3720
-WARNING:root:You Deep Search API call count: 3730
-WARNING:root:You Deep Search API call count: 3740
-WARNING:root:You Deep Search API call count: 3750
-WARNING:root:You Deep Search API call count: 3760
-WARNING:root:You Deep Search API call count: 3770
-WARNING:root:You Deep Search API call count: 3780
-WARNING:root:You Deep Search API call count: 3790
-WARNING:root:You Deep Search API call count: 3800
-WARNING:root:You Deep Search API call count: 3810
-WARNING:root:You Deep Search API call count: 3820
-WARNING:root:You Deep Search API call count: 3830
-WARNING:root:You Deep Search API call count: 3840
-WARNING:root:You Deep Search API call count: 3850
-84it [13:03:59, 810.97s/it]WARNING:root:You Deep Search API call count: 3860
-85it [13:09:19, 663.79s/it]WARNING:root:YouDeepSearch request failed for '家計調査 年報 二人以上 世帯属性別 夫婦のみ 高齢 65歳以上 用途分類 表ID', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '家計調査 年報 二人以上 世帯属性別 夫婦のみ 高齢 65歳以上 用途分類 表ID' (unexpected error): TimeoutError: TimeoutError()
-86it [13:11:59, 512.64s/it]WARNING:root:You Deep Search API call count: 3870
-WARNING:root:YouDeepSearch request failed for '音乐 版权 授权 平台 政策 2015 网络音乐 付费 措施 腾讯音乐 网易 云 音乐 授权 变化 创作者 分成 实证 分析', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '音乐 版权 授权 平台 政策 2015 网络音乐 付费 措施 腾讯音乐 网易 云 音乐 授权 变化 创作者 分成 实证 分析' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'CHI PLAY 2022 2023 co-creative AI large language models game design paper arXiv FDG DiGRA', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'CHI PLAY 2022 2023 co-creative AI large language models game design paper arXiv FDG DiGRA' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 3880
-87it [13:18:43, 479.99s/it]WARNING:root:You Deep Search API call count: 3890
-WARNING:root:You Deep Search API call count: 3900
-88it [13:23:56, 429.93s/it]WARNING:root:You Deep Search API call count: 3910
-WARNING:root:You Deep Search API call count: 3920
-WARNING:root:You Deep Search API call count: 3930
-89it [13:32:21, 452.46s/it]WARNING:root:You Deep Search API call count: 3940
-WARNING:root:You Deep Search API call count: 3950
-WARNING:root:You Deep Search API call count: 3960
-WARNING:root:You Deep Search API call count: 3970
-WARNING:root:You Deep Search API call count: 3980
-WARNING:root:You Deep Search API call count: 3990
-WARNING:root:You Deep Search API call count: 4000
-WARNING:root:You Deep Search API call count: 4010
-WARNING:root:You Deep Search API call count: 4020
-WARNING:root:You Deep Search API call count: 4030
-WARNING:root:You Deep Search API call count: 4040
-WARNING:root:You Deep Search API call count: 4050
-WARNING:root:You Deep Search API call count: 4060
-WARNING:root:You Deep Search API call count: 4070
-WARNING:root:You Deep Search API call count: 4080
-WARNING:root:You Deep Search API call count: 4090
-WARNING:root:You Deep Search API call count: 4100
-WARNING:root:YouDeepSearch request failed for 'Netflix Top 10 ‘One Hundred Years of Solitude’ weekly views December 2024 January 2025 site:top10.netflix.com', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Netflix Top 10 ‘One Hundred Years of Solitude’ weekly views December 2024 January 2025 site:top10.netflix.com' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'site:counter-strike.net Premier rating CS2 matchmaking blog 2023 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:counter-strike.net Premier rating CS2 matchmaking blog 2023 2024' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4110
-WARNING:root:You Deep Search API call count: 4120
-WARNING:root:YouDeepSearch request failed for 'site:play.google.com Google Play policy loot box odds disclosure 2021 2022 2023 2024', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:play.google.com Google Play policy loot box odds disclosure 2021 2022 2023 2024' (status 502): <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no- [Response Headers: {'Date': 'Sat, 24 Jan 2026 08:12:26 GMT', 'Content-Type': 'text/html; charset=UTF-8', 'Content-Length': '6484', 'Connection': 'keep-alive', 'Cache-Control': 'private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0', 'Referrer-Policy': 'same-origin', 'Expires': 'Thu, 01 Jan 1970 00:00:01 GMT', 'Proxy-Status': 'Cloudflare-Proxy;error=http_response_incomplete', 'Cf-Ray': '9c2e1054db797c79-LAX', 'X-Frame-Options': 'SAMEORIGIN'}]
-WARNING:root:You Deep Search API call count: 4130
-WARNING:root:You Deep Search API call count: 4140
-WARNING:root:YouDeepSearch request failed for 'ITU-T SG13 and SG17 quantum key distribution quantum information networking recommendations list 2019..2026 site:itu.int', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ITU-T SG13 and SG17 quantum key distribution quantum information networking recommendations list 2019..2026 site:itu.int' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'ETSI GS QKD series list and editors', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ETSI GS QKD series list and editors' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'QuantumCTek field deployments China operators 2019-2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'QuantumCTek field deployments China operators 2019-2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Italian QKD metro networks Milan Turin Florence QTI 2019-2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Italian QKD metro networks Milan Turin Florence QTI 2019-2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'ETSI ISG-QKD leadership 2019-2026 standards', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ETSI ISG-QKD leadership 2019-2026 standards' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Lumen CenturyLink quantum networking trial 2019-2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Lumen CenturyLink quantum networking trial 2019-2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Qasky QKD deployments China 2019-2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Qasky QKD deployments China 2019-2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'ZTE quantum communication QKD operators 2019-2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'ZTE quantum communication QKD operators 2019-2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4150
-WARNING:root:YouDeepSearch request failed for '西安地铁 供电方式 第三轨 接触网 线路 官网', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '西安地铁 供电方式 第三轨 接触网 线路 官网' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'AAC 增强 替代 沟通 微信 应用 自闭症 学校 中国 2015..2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'AAC 增强 替代 沟通 微信 应用 自闭症 学校 中国 2015..2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for '高概率 要求 序列 行为 动量 学校 自闭症 中国 2015..2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '高概率 要求 序列 行为 动量 学校 自闭症 中国 2015..2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for '同伴 介入 自闭症 班级 中国 随机 对照 或 单一 个案 多重 基线 2015..2026', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '同伴 介入 自闭症 班级 中国 随机 对照 或 单一 个案 多重 基线 2015..2026' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'MIT Lincoln Laboratory quantum networking protocol testbed QKD 2019 2020 2021 2022 2023', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'MIT Lincoln Laboratory quantum networking protocol testbed QKD 2019 2020 2021 2022 2023' (unexpected error): TimeoutError: TimeoutError()
-90it [14:13:06, 1050.15s/it]WARNING:root:You Deep Search API call count: 4160
-WARNING:root:You Deep Search API call count: 4170
-WARNING:root:You Deep Search API call count: 4180
-WARNING:root:You Deep Search API call count: 4190
-WARNING:root:You Deep Search API call count: 4200
-91it [14:17:45, 818.91s/it] WARNING:root:You Deep Search API call count: 4210
-92it [14:21:07, 633.80s/it]WARNING:root:You Deep Search API call count: 4220
-WARNING:root:You Deep Search API call count: 4230
-93it [14:26:08, 533.96s/it]WARNING:root:You Deep Search API call count: 4240
-WARNING:root:You Deep Search API call count: 4250
-WARNING:root:You Deep Search API call count: 4260
-WARNING:root:You Deep Search API call count: 4270
-WARNING:root:You Deep Search API call count: 4280
-WARNING:root:YouDeepSearch request failed for 'China loot box probability disclosure regulation 2021 2022 2023 2024 NPPA MIIT notice game probability requirements English', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'China loot box probability disclosure regulation 2021 2022 2023 2024 NPPA MIIT notice game probability requirements English' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4290
-WARNING:root:You Deep Search API call count: 4300
-WARNING:root:You Deep Search API call count: 4310
-WARNING:root:You Deep Search API call count: 4320
-94it [14:40:38, 634.72s/it]WARNING:root:You Deep Search API call count: 4330
-WARNING:root:YouDeepSearch request failed for 'ETSI GS QKD series list and editors', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'ETSI GS QKD series list and editors' (unexpected error): TimeoutError: TimeoutError()
-95it [14:45:35, 533.52s/it]WARNING:root:You Deep Search API call count: 4340
-WARNING:root:You Deep Search API call count: 4350
-96it [14:50:30, 461.78s/it]WARNING:root:You Deep Search API call count: 4360
-WARNING:root:YouDeepSearch request failed for '2023 high jewelry collections Paris Haute Couture July 2023 Vogue Runway Cartier Van Cleef Boucheron Bulgari Tiffany Chanel Dior Chopard Harry Winston Graff Piaget Buccellati Mikimoto', retrying in 1s (attempt 1/4): YouDeepSearch request failed for '2023 high jewelry collections Paris Haute Couture July 2023 Vogue Runway Cartier Van Cleef Boucheron Bulgari Tiffany Chanel Dior Chopard Harry Winston Graff Piaget Buccellati Mikimoto' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4370
-WARNING:root:You Deep Search API call count: 4380
-WARNING:root:You Deep Search API call count: 4390
-WARNING:root:You Deep Search API call count: 4400
-WARNING:root:YouDeepSearch request failed for 'site:nfra.gov.cn 2024 年 保险 业 经营 数据 原保险 保费 利润 综合成本 口径', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:nfra.gov.cn 2024 年 保险 业 经营 数据 原保险 保费 利润 综合成本 口径' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'site:nafmii.org.cn 2024 年 债券 市场 统计 社会 融资 直接融资 2025 年1月 发布 年度 数据', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:nafmii.org.cn 2024 年 债券 市场 统计 社会 融资 直接融资 2025 年1月 发布 年度 数据' (unexpected error): TimeoutError: TimeoutError()
-97it [15:06:09, 605.05s/it]WARNING:root:You Deep Search API call count: 4410
-WARNING:root:You Deep Search API call count: 4420
-WARNING:root:You Deep Search API call count: 4430
-WARNING:root:You Deep Search API call count: 4440
-WARNING:root:You Deep Search API call count: 4450
-WARNING:root:You Deep Search API call count: 4460
-WARNING:root:You Deep Search API call count: 4470
-WARNING:root:You Deep Search API call count: 4480
-WARNING:root:You Deep Search API call count: 4490
-WARNING:root:YouDeepSearch request failed for 'site:court.gov.cn 死刑复核 数据 2007 2012 不核准 比例', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:court.gov.cn 死刑复核 数据 2007 2012 不核准 比例' (unexpected error): TimeoutError: TimeoutError()
-98it [15:26:05, 782.23s/it]WARNING:root:YouDeepSearch request failed for 'quantum repeater patent assignees Toshiba NTT NEC KDDI Huawei ID Quantique PsiQuantum QuEra QuTech QuEra? entanglement swapping quantum memory transducer patents family examples links', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'quantum repeater patent assignees Toshiba NTT NEC KDDI Huawei ID Quantique PsiQuantum QuEra QuTech QuEra? entanglement swapping quantum memory transducer patents family examples links' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4500
-WARNING:root:You Deep Search API call count: 4510
-WARNING:root:You Deep Search API call count: 4520
-WARNING:root:YouDeepSearch request failed for 'site:csrc.gov.cn 并购 重组 2024 年 统计 数量 金额 上市公司 重大资产重组', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'site:csrc.gov.cn 并购 重组 2024 年 统计 数量 金额 上市公司 重大资产重组' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:You Deep Search API call count: 4530
-WARNING:root:YouDeepSearch request failed for 'site:csrc.gov.cn 并购 重组 2024 年 统计 数量 金额 上市公司 重大资产重组', retrying in 2s (attempt 2/4): YouDeepSearch request failed for 'site:csrc.gov.cn 并购 重组 2024 年 统计 数量 金额 上市公司 重大资产重组' (unexpected error): TimeoutError: TimeoutError()
-WARNING:root:YouDeepSearch request failed for 'Regional human rights courts jurisdiction dataset countries under ECtHR, IACtHR, African Court with declaration years', retrying in 1s (attempt 1/4): YouDeepSearch request failed for 'Regional human rights courts jurisdiction dataset countries under ECtHR, IACtHR, African Court with declaration years' (unexpected error): TimeoutError: TimeoutError()
-99it [16:25:13, 1612.14s/it]WARNING:root:You Deep Search API call count: 4540
-100it [16:38:57, 1375.71s/it]100it [16:38:57, 599.38s/it] 
-<AsyncExperimentResults ODR GPT-5, You Deep Search-7eeb5fde>
-
-Total execution time: 59952.88 seconds
