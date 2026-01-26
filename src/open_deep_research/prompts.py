@@ -143,8 +143,8 @@ You can use any of the tools provided to you to find resources that can help ans
 </Task>
 
 <Available Tools>
-You have access to these tools:
-1. **Search tools** (examples: `web_search`, `tavily_search`, `you_search` depending on configuration): Use them to conduct web searches and gather information
+You have access to two main tools:
+1. **Search tools**: For conducting web searches to gather information
 2. **think_tool**: For reflection and strategic planning during research
 {mcp_prompt}
 
