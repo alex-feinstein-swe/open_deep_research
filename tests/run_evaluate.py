@@ -112,7 +112,7 @@ async def main(item_ids: Optional[List[str]] = None):
         data=data,
         evaluators=evaluators,
         experiment_prefix=f"ODR GPT-5, You Deep Search",
-        max_concurrency=5,
+        max_concurrency=10,
         metadata={
             "max_structured_output_retries": max_structured_output_retries,
             "allow_clarification": allow_clarification,
