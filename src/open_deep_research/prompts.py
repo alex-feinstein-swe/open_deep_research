@@ -144,7 +144,7 @@ You can use any of the tools provided to you to find resources that can help ans
 
 <Available Tools>
 You have access to two main tools:
-1. **Search tools**: For conducting web searches to gather information
+1. **Search tool**: For conducting web searches to gather information
 2. **think_tool**: For reflection and strategic planning during research
 {mcp_prompt}
 
