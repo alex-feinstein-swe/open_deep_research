@@ -71,13 +71,12 @@ def get_evaluation_data(
     item_ids: Optional[List[str]] = None
 ):
     """
-    Get evaluation data, optionally filtered by item IDs.
+    Get evaluation data, optionally filtered by LangSmith example IDs.
     
     Args:
         client: LangSmith client instance
         dataset_name: Name of the dataset to evaluate
-        item_ids: Optional list of item IDs to filter. If None, returns dataset name for full evaluation.
-                  Can be metadata IDs (from dataset) or LangSmith example IDs.
+        item_ids: Optional list of LangSmith example IDs to filter. If None, returns dataset name for full evaluation.
     
     Returns:
         Either a list of filtered Example objects or the dataset name string.
@@ -95,21 +94,12 @@ def get_evaluation_data(
     examples_gen = client.list_examples(dataset_id=dataset.id)
     all_examples = list(examples_gen)
     
-    # Filter examples by the provided IDs
-    # Support both metadata IDs and LangSmith example IDs
+    # Filter examples by LangSmith example IDs only
     item_ids_str = [str(id) for id in item_ids]
-    filtered_examples = []
-    for ex in all_examples:
-        # Check if it matches by LangSmith example ID
-        if str(ex.id) in item_ids_str:
-            filtered_examples.append(ex)
-        # Check if it matches by metadata ID
-        elif ex.metadata and ex.metadata.get("id") is not None:
-            if str(ex.metadata.get("id")) in item_ids_str:
-                filtered_examples.append(ex)
+    filtered_examples = [ex for ex in all_examples if str(ex.id) in item_ids_str]
     
     if not filtered_examples:
-        raise ValueError(f"No examples found matching the provided IDs: {item_ids}")
+        raise ValueError(f"No examples found matching the provided LangSmith example IDs: {item_ids}")
     
     print(f"Filtered to {len(filtered_examples)} examples from {len(all_examples)} total")
     return filtered_examples
@@ -150,9 +140,6 @@ if __name__ == "__main__":
             # Run on entire dataset
             python tests/run_evaluate.py
             
-            # Run on specific item IDs (metadata IDs)
-            python tests/run_evaluate.py --item-ids 1 2 3 4 5
-            
             # Run on specific LangSmith example IDs
             python tests/run_evaluate.py --item-ids abc123 def456
         """
@@ -160,7 +147,7 @@ if __name__ == "__main__":
     parser.add_argument(
         '--item-ids',
         nargs='+',
-        help='Specific item IDs to evaluate (space-separated). Can be metadata IDs or LangSmith example IDs.'
+        help='Specific LangSmith example IDs to evaluate (space-separated).'
     )
     args = parser.parse_args()
     
