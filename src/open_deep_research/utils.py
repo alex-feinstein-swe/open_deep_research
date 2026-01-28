@@ -337,7 +337,7 @@ async def you_search_async(
         async def fetch(query: str):
             params = {
                 "query": query,
-                "count": max(5, max_results),
+                "count": max(1, max_results),
                 "livecrawl": livecrawl,
                 "livecrawl_formats": "markdown",
                 "num_bytes": 500000,
