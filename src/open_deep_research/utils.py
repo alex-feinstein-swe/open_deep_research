@@ -330,7 +330,7 @@ async def you_search_async(
         )
 
     headers = {"x-api-key": api_key}
-    base_url = "https://api.ydc-index.io/v1/search"
+    base_url = "https://ydc-index.io/v1/search"
     timeout = aiohttp.ClientTimeout(total=60)
 
     async with aiohttp.ClientSession(timeout=timeout) as session:
@@ -340,6 +340,8 @@ async def you_search_async(
                 "count": max(1, max_results),
                 "livecrawl": livecrawl,
                 "livecrawl_formats": "markdown",
+                "num_bytes": 500000,
+                "skip_firecrawl": True
             }
             try:
                 async with session.get(base_url, headers=headers, params=params) as response:
@@ -383,7 +385,7 @@ async def you_deep_search_async(
 
     use_staging = use_you_deep_search_staging()
     api_key = get_you_deep_search_api_key(config)
-    
+
     if not api_key:
         key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
         raise ToolException(
@@ -405,10 +407,10 @@ async def you_deep_search_async(
         async def fetch(query: str):
             payload = {
                 "query": query,
-                "search_effort": "high",
+                "search_effort": "medium",
             }
             max_retries = 3
-            
+
             for attempt in range(max_retries + 1):
                 error = None
                 try:
@@ -418,11 +420,11 @@ async def you_deep_search_async(
                         _you_deep_search_api_call_count += 1
                         if _you_deep_search_api_call_count % 10 == 0:
                             logging.warning(f"You Deep Search API call count: {_you_deep_search_api_call_count}")
-                    
+
                     async with session.post(base_url, headers=headers, json=payload, timeout=timeout) as response:
                         # Get all response headers
                         response_headers = dict(response.headers)
-                        
+
                         if response.status == 200:
                             try:
                                 return await response.json()
@@ -432,19 +434,19 @@ async def you_deep_search_async(
                                     f"YouDeepSearch request failed for '{query}' (JSON decode error): {str(json_exc)}"
                                 )
                                 # Continue to retry logic below
-                        
+
                         if error is None:
                             # Read error text once for both retry and final failure cases
                             try:
                                 error_text = await response.text()
                             except Exception as text_exc:
                                 error_text = f"<unable to read response body: {text_exc}>"
-                            
+
                             # Create exception for non-200 status codes
                             error = ToolException(
                                 f"YouDeepSearch request failed for '{query}' (status {response.status}): {error_text[:200]} [Response Headers: {response_headers}]"
                             )
-                            
+
                 except aiohttp.ClientError as exc:
                     # Convert network errors to ToolException
                     error = ToolException(
@@ -458,7 +460,7 @@ async def you_deep_search_async(
                     exc_str = str(exc) if str(exc) else "<no message>"
                     exc_repr = repr(exc)
                     exc_args = exc.args if hasattr(exc, 'args') else None
-                    
+
                     # Build detailed error message
                     error_details = f"{exc_type}"
                     if exc_module and exc_module != 'builtins':
@@ -469,11 +471,11 @@ async def you_deep_search_async(
                         error_details += f": args={exc_args}"
                     else:
                         error_details += f": {exc_repr}"
-                    
+
                     error = ToolException(
                         f"YouDeepSearch request failed for '{query}' (unexpected error): {error_details}"
                     )
-                
+
                 # Handle error (either from status code or network error)
                 if error:
                     if attempt < max_retries:
@@ -516,11 +518,11 @@ async def you_deep_search(
     config: RunnableConfig = None,
 ) -> str:
     """Fetch and format deep search results from the You.com Deep Search API.
-    
+
     Args:
         queries: List of search queries to execute
         config: Runtime configuration for API keys and model settings
-    
+
     Returns:
         Formatted string containing deep search results with answers and sources
     """
@@ -540,24 +542,24 @@ async def you_deep_search(
 
     # Format results from deep search API
     formatted_output = "Deep search results: \n\n"
-    
+
     for response in search_results:
         answer = response.get("answer", "No answer provided.")
         results = response.get("results", [])
-        
+
         # Include the answer as the main content
         if answer:
             formatted_output += f"ANSWER:\n{answer}\n\n"
-        
+
         # Format sources similar to format_search_results
         for i, result in enumerate(results, start=1):
             url = result.get("url", "Unknown URL")
             title = result.get("title") or "Untitled Source"
             snippets = result.get("snippets", [])
-            
+
             # Combine snippets into content string
             content = " ".join(snippets) if snippets else "No excerpts available."
-            
+
             formatted_output += f"\n\n--- SOURCE {i}: {title} ---\n"
             formatted_output += f"URL: {url}\n\n"
             formatted_output += f"SUMMARY:\n{content}\n\n"
@@ -567,35 +569,35 @@ async def you_deep_search(
 
 async def summarize_webpage(model: BaseChatModel, webpage_content: str) -> str:
     """Summarize webpage content using AI model with timeout protection.
-    
+
     Args:
         model: The chat model configured for summarization
         webpage_content: Raw webpage content to be summarized
-        
+
     Returns:
         Formatted summary with key excerpts, or original content if summarization fails
     """
     try:
         # Create prompt with current date context
         prompt_content = summarize_webpage_prompt.format(
-            webpage_content=webpage_content, 
+            webpage_content=webpage_content,
             date=get_today_str()
         )
-        
+
         # Execute summarization with timeout to prevent hanging
         summary = await asyncio.wait_for(
             model.ainvoke([HumanMessage(content=prompt_content)]),
             timeout=60.0  # 60 second timeout for summarization
         )
-        
+
         # Format the summary with structured sections
         formatted_summary = (
             f"<summary>\n{summary.summary}\n</summary>\n\n"
             f"<key_excerpts>\n{summary.key_excerpts}\n</key_excerpts>"
         )
-        
+
         return formatted_summary
-        
+
     except asyncio.TimeoutError:
         # Timeout during summarization - return original content
         logging.warning("Summarization timed out after 60 seconds, returning original content")
@@ -645,11 +647,11 @@ async def get_mcp_access_token(
     base_mcp_url: str,
 ) -> Optional[Dict[str, Any]]:
     """Exchange Supabase token for MCP access token using OAuth token exchange.
-    
+
     Args:
         supabase_token: Valid Supabase authentication token
         base_mcp_url: Base URL of the MCP server
-        
+
     Returns:
         Token data dictionary if successful, None if failed
     """
@@ -662,12 +664,12 @@ async def get_mcp_access_token(
             "resource": base_mcp_url.rstrip("/") + "/mcp",
             "subject_token_type": "urn:ietf:params:oauth:token-type:access_token",
         }
-        
+
         # Execute token exchange request
         async with aiohttp.ClientSession() as session:
             token_url = base_mcp_url.rstrip("/") + "/oauth/token"
             headers = {"Content-Type": "application/x-www-form-urlencoded"}
-            
+
             async with session.post(token_url, headers=headers, data=form_data) as response:
                 if response.status == 200:
                     # Successfully obtained token
@@ -677,43 +679,43 @@ async def get_mcp_access_token(
                     # Log error details for debugging
                     response_text = await response.text()
                     logging.error(f"Token exchange failed: {response_text}")
-                    
+
     except Exception as e:
         logging.error(f"Error during token exchange: {e}")
-    
+
     return None
 
 async def get_tokens(config: RunnableConfig):
     """Retrieve stored authentication tokens with expiration validation.
-    
+
     Args:
         config: Runtime configuration containing thread and user identifiers
-        
+
     Returns:
         Token dictionary if valid and not expired, None otherwise
     """
     store = get_store()
-    
+
     # Extract required identifiers from config
     thread_id = config.get("configurable", {}).get("thread_id")
     if not thread_id:
         return None
-        
+
     user_id = config.get("metadata", {}).get("owner")
     if not user_id:
         return None
-    
+
     # Retrieve stored tokens
     tokens = await store.aget((user_id, "tokens"), "data")
     if not tokens:
         return None
-    
+
     # Check token expiration
     expires_in = tokens.value.get("expires_in")  # seconds until expiration
     created_at = tokens.created_at  # datetime of token creation
     current_time = datetime.now(timezone.utc)
     expiration_time = created_at + timedelta(seconds=expires_in)
-    
+
     if current_time > expiration_time:
         # Token expired, clean up and return None
         await store.adelete((user_id, "tokens"), "data")
@@ -723,31 +725,31 @@ async def get_tokens(config: RunnableConfig):
 
 async def set_tokens(config: RunnableConfig, tokens: dict[str, Any]):
     """Store authentication tokens in the configuration store.
-    
+
     Args:
         config: Runtime configuration containing thread and user identifiers
         tokens: Token dictionary to store
     """
     store = get_store()
-    
+
     # Extract required identifiers from config
     thread_id = config.get("configurable", {}).get("thread_id")
     if not thread_id:
         return
-        
+
     user_id = config.get("metadata", {}).get("owner")
     if not user_id:
         return
-    
+
     # Store the tokens
     await store.aput((user_id, "tokens"), "data", tokens)
 
 async def fetch_tokens(config: RunnableConfig) -> dict[str, Any]:
     """Fetch and refresh MCP tokens, obtaining new ones if needed.
-    
+
     Args:
         config: Runtime configuration with authentication details
-        
+
     Returns:
         Valid token dictionary, or None if unable to obtain tokens
     """
@@ -755,17 +757,17 @@ async def fetch_tokens(config: RunnableConfig) -> dict[str, Any]:
     current_tokens = await get_tokens(config)
     if current_tokens:
         return current_tokens
-    
+
     # Extract Supabase token for new token exchange
     supabase_token = config.get("configurable", {}).get("x-supabase-access-token")
     if not supabase_token:
         return None
-    
+
     # Extract MCP configuration
     mcp_config = config.get("configurable", {}).get("mcp_config")
     if not mcp_config or not mcp_config.get("url"):
         return None
-    
+
     # Exchange Supabase token for MCP tokens
     mcp_tokens = await get_mcp_access_token(supabase_token, mcp_config.get("url"))
     if not mcp_tokens:
@@ -777,64 +779,64 @@ async def fetch_tokens(config: RunnableConfig) -> dict[str, Any]:
 
 def wrap_mcp_authenticate_tool(tool: StructuredTool) -> StructuredTool:
     """Wrap MCP tool with comprehensive authentication and error handling.
-    
+
     Args:
         tool: The MCP structured tool to wrap
-        
+
     Returns:
         Enhanced tool with authentication error handling
     """
     original_coroutine = tool.coroutine
-    
+
     async def authentication_wrapper(**kwargs):
         """Enhanced coroutine with MCP error handling and user-friendly messages."""
-        
+
         def _find_mcp_error_in_exception_chain(exc: BaseException) -> McpError | None:
             """Recursively search for MCP errors in exception chains."""
             if isinstance(exc, McpError):
                 return exc
-            
+
             # Handle ExceptionGroup (Python 3.11+) by checking attributes
             if hasattr(exc, 'exceptions'):
                 for sub_exception in exc.exceptions:
                     if found_error := _find_mcp_error_in_exception_chain(sub_exception):
                         return found_error
             return None
-        
+
         try:
             # Execute the original tool functionality
             return await original_coroutine(**kwargs)
-            
+
         except BaseException as original_error:
             # Search for MCP-specific errors in the exception chain
             mcp_error = _find_mcp_error_in_exception_chain(original_error)
             if not mcp_error:
                 # Not an MCP error, re-raise the original exception
                 raise original_error
-            
+
             # Handle MCP-specific error cases
             error_details = mcp_error.error
             error_code = getattr(error_details, "code", None)
             error_data = getattr(error_details, "data", None) or {}
-            
+
             # Check for authentication/interaction required error
             if error_code == -32003:  # Interaction required error code
                 message_payload = error_data.get("message", {})
                 error_message = "Required interaction"
-                
+
                 # Extract user-friendly message if available
                 if isinstance(message_payload, dict):
                     error_message = message_payload.get("text") or error_message
-                
+
                 # Append URL if provided for user reference
                 if url := error_data.get("url"):
                     error_message = f"{error_message} {url}"
-                
+
                 raise ToolException(error_message) from original_error
-            
+
             # For other MCP errors, re-raise the original
             raise original_error
-    
+
     # Replace the tool's coroutine with our enhanced version
     tool.coroutine = authentication_wrapper
     return tool
@@ -844,41 +846,41 @@ async def load_mcp_tools(
     existing_tool_names: set[str],
 ) -> list[BaseTool]:
     """Load and configure MCP (Model Context Protocol) tools with authentication.
-    
+
     Args:
         config: Runtime configuration containing MCP server details
         existing_tool_names: Set of tool names already in use to avoid conflicts
-        
+
     Returns:
         List of configured MCP tools ready for use
     """
     configurable = Configuration.from_runnable_config(config)
-    
+
     # Step 1: Handle authentication if required
     if configurable.mcp_config and configurable.mcp_config.auth_required:
         mcp_tokens = await fetch_tokens(config)
     else:
         mcp_tokens = None
-    
+
     # Step 2: Validate configuration requirements
     config_valid = (
-        configurable.mcp_config and 
-        configurable.mcp_config.url and 
-        configurable.mcp_config.tools and 
+        configurable.mcp_config and
+        configurable.mcp_config.url and
+        configurable.mcp_config.tools and
         (mcp_tokens or not configurable.mcp_config.auth_required)
     )
-    
+
     if not config_valid:
         return []
-    
+
     # Step 3: Set up MCP server connection
     server_url = configurable.mcp_config.url.rstrip("/") + "/mcp"
-    
+
     # Configure authentication headers if tokens are available
     auth_headers = None
     if mcp_tokens:
         auth_headers = {"Authorization": f"Bearer {mcp_tokens['access_token']}"}
-    
+
     mcp_server_config = {
         "server_1": {
             "url": server_url,
@@ -887,7 +889,7 @@ async def load_mcp_tools(
         }
     }
     # TODO: When Multi-MCP Server support is merged in OAP, update this code
-    
+
     # Step 4: Load tools from MCP server
     try:
         client = MultiServerMCPClient(mcp_server_config)
@@ -895,7 +897,7 @@ async def load_mcp_tools(
     except Exception:
         # If MCP server connection fails, return empty list
         return []
-    
+
     # Step 5: Filter and configure tools
     configured_tools = []
     for mcp_tool in available_mcp_tools:
@@ -905,15 +907,15 @@ async def load_mcp_tools(
                 f"MCP tool '{mcp_tool.name}' conflicts with existing tool name - skipping"
             )
             continue
-        
+
         # Only include tools specified in configuration
         if mcp_tool.name not in set(configurable.mcp_config.tools):
             continue
-        
+
         # Wrap tool with authentication handling and add to list
         enhanced_tool = wrap_mcp_authenticate_tool(mcp_tool)
         configured_tools.append(enhanced_tool)
-    
+
     return configured_tools
 
 
@@ -923,35 +925,35 @@ async def load_mcp_tools(
 
 async def get_search_tool(search_api: SearchAPI):
     """Configure and return search tools based on the specified API provider.
-    
+
     Args:
         search_api: The search API provider to use (Anthropic, OpenAI, Tavily, or None)
-        
+
     Returns:
         List of configured search tool objects for the specified provider
     """
     if search_api == SearchAPI.ANTHROPIC:
         # Anthropic's native web search with usage limits
         return [{
-            "type": "web_search_20250305", 
-            "name": "web_search", 
+            "type": "web_search_20250305",
+            "name": "web_search",
             "max_uses": 5
         }]
-        
+
     elif search_api == SearchAPI.OPENAI:
         # OpenAI's web search preview functionality
         return [{"type": "web_search_preview"}]
-        
+
     elif search_api == SearchAPI.TAVILY:
         # Configure Tavily search tool with metadata
         search_tool = tavily_search
         search_tool.metadata = {
-            **(search_tool.metadata or {}), 
-            "type": "search", 
+            **(search_tool.metadata or {}),
+            "type": "search",
             "name": "web_search"
         }
         return [search_tool]
-        
+
     elif search_api == SearchAPI.YOUSEARCH:
         # Configure You.com search tool with metadata
         search_tool = you_search
@@ -961,7 +963,7 @@ async def get_search_tool(search_api: SearchAPI):
             "name": "web_search"
         }
         return [search_tool]
-        
+
     elif search_api == SearchAPI.YOUDEEPSEARCH:
         # Configure You.com deep search tool with metadata
         search_tool = you_deep_search
@@ -971,42 +973,42 @@ async def get_search_tool(search_api: SearchAPI):
             "name": "web_search"
         }
         return [search_tool]
-        
+
     elif search_api == SearchAPI.NONE:
         # No search functionality configured
         return []
-        
+
     # Default fallback for unknown search API types
     return []
-    
+
 async def get_all_tools(config: RunnableConfig):
     """Assemble complete toolkit including research, search, and MCP tools.
-    
+
     Args:
         config: Runtime configuration specifying search API and MCP settings
-        
+
     Returns:
         List of all configured and available tools for research operations
     """
     # Start with core research tools
     tools = [tool(ResearchComplete), think_tool]
-    
+
     # Add configured search tools
     configurable = Configuration.from_runnable_config(config)
     search_api = SearchAPI(get_config_value(configurable.search_api))
     search_tools = await get_search_tool(search_api)
     tools.extend(search_tools)
-    
+
     # Track existing tool names to prevent conflicts
     existing_tool_names = {
-        tool.name if hasattr(tool, "name") else tool.get("name", "web_search") 
+        tool.name if hasattr(tool, "name") else tool.get("name", "web_search")
         for tool in tools
     }
-    
+
     # Add MCP tools if configured
     mcp_tools = await load_mcp_tools(config, existing_tool_names)
     tools.extend(mcp_tools)
-    
+
     return tools
 
 def get_notes_from_tool_calls(messages: list[MessageLikeRepresentation]):
@@ -1019,10 +1021,10 @@ def get_notes_from_tool_calls(messages: list[MessageLikeRepresentation]):
 
 def anthropic_websearch_called(response):
     """Detect if Anthropic's native web search was used in the response.
-    
+
     Args:
         response: The response object from Anthropic's API
-        
+
     Returns:
         True if web search was called, False otherwise
     """
@@ -1031,30 +1033,30 @@ def anthropic_websearch_called(response):
         usage = response.response_metadata.get("usage")
         if not usage:
             return False
-        
+
         # Check for server-side tool usage information
         server_tool_use = usage.get("server_tool_use")
         if not server_tool_use:
             return False
-        
+
         # Look for web search request count
         web_search_requests = server_tool_use.get("web_search_requests")
         if web_search_requests is None:
             return False
-        
+
         # Return True if any web search requests were made
         return web_search_requests > 0
-        
+
     except (AttributeError, TypeError):
         # Handle cases where response structure is unexpected
         return False
 
 def openai_websearch_called(response):
     """Detect if OpenAI's web search functionality was used in the response.
-    
+
     Args:
         response: The response object from OpenAI's API
-        
+
     Returns:
         True if web search was called, False otherwise
     """
@@ -1062,12 +1064,12 @@ def openai_websearch_called(response):
     tool_outputs = response.additional_kwargs.get("tool_outputs")
     if not tool_outputs:
         return False
-    
+
     # Look for web search calls in the tool outputs
     for tool_output in tool_outputs:
         if tool_output.get("type") == "web_search_call":
             return True
-    
+
     return False
 
 
@@ -1077,16 +1079,16 @@ def openai_websearch_called(response):
 
 def is_token_limit_exceeded(exception: Exception, model_name: str = None) -> bool:
     """Determine if an exception indicates a token/context limit was exceeded.
-    
+
     Args:
         exception: The exception to analyze
         model_name: Optional model name to optimize provider detection
-        
+
     Returns:
         True if the exception indicates a token limit was exceeded, False otherwise
     """
     error_str = str(exception).lower()
-    
+
     # Step 1: Determine provider from model name if available
     provider = None
     if model_name:
@@ -1097,7 +1099,7 @@ def is_token_limit_exceeded(exception: Exception, model_name: str = None) -> boo
             provider = 'anthropic'
         elif model_str.startswith('gemini:') or model_str.startswith('google:'):
             provider = 'gemini'
-    
+
     # Step 2: Check provider-specific token limit patterns
     if provider == 'openai':
         return _check_openai_token_limit(exception, error_str)
@@ -1105,7 +1107,7 @@ def is_token_limit_exceeded(exception: Exception, model_name: str = None) -> boo
         return _check_anthropic_token_limit(exception, error_str)
     elif provider == 'gemini':
         return _check_gemini_token_limit(exception, error_str)
-    
+
     # Step 3: If provider unknown, check all providers
     return (
         _check_openai_token_limit(exception, error_str) or
@@ -1119,31 +1121,31 @@ def _check_openai_token_limit(exception: Exception, error_str: str) -> bool:
     exception_type = str(type(exception))
     class_name = exception.__class__.__name__
     module_name = getattr(exception.__class__, '__module__', '')
-    
+
     # Check if this is an OpenAI exception
     is_openai_exception = (
-        'openai' in exception_type.lower() or 
+        'openai' in exception_type.lower() or
         'openai' in module_name.lower()
     )
-    
+
     # Check for typical OpenAI token limit error types
     is_request_error = class_name in ['BadRequestError', 'InvalidRequestError']
-    
+
     if is_openai_exception and is_request_error:
         # Look for token-related keywords in error message
         token_keywords = ['token', 'context', 'length', 'maximum context', 'reduce']
         if any(keyword in error_str for keyword in token_keywords):
             return True
-    
+
     # Check for specific OpenAI error codes
     if hasattr(exception, 'code') and hasattr(exception, 'type'):
         error_code = getattr(exception, 'code', '')
         error_type = getattr(exception, 'type', '')
-        
+
         if (error_code == 'context_length_exceeded' or
             error_type == 'invalid_request_error'):
             return True
-    
+
     return False
 
 def _check_anthropic_token_limit(exception: Exception, error_str: str) -> bool:
@@ -1152,21 +1154,21 @@ def _check_anthropic_token_limit(exception: Exception, error_str: str) -> bool:
     exception_type = str(type(exception))
     class_name = exception.__class__.__name__
     module_name = getattr(exception.__class__, '__module__', '')
-    
+
     # Check if this is an Anthropic exception
     is_anthropic_exception = (
-        'anthropic' in exception_type.lower() or 
+        'anthropic' in exception_type.lower() or
         'anthropic' in module_name.lower()
     )
-    
+
     # Check for Anthropic-specific error patterns
     is_bad_request = class_name == 'BadRequestError'
-    
+
     if is_anthropic_exception and is_bad_request:
         # Anthropic uses specific error messages for token limits
         if 'prompt is too long' in error_str:
             return True
-    
+
     return False
 
 def _check_gemini_token_limit(exception: Exception, error_str: str) -> bool:
@@ -1175,26 +1177,26 @@ def _check_gemini_token_limit(exception: Exception, error_str: str) -> bool:
     exception_type = str(type(exception))
     class_name = exception.__class__.__name__
     module_name = getattr(exception.__class__, '__module__', '')
-    
+
     # Check if this is a Google/Gemini exception
     is_google_exception = (
-        'google' in exception_type.lower() or 
+        'google' in exception_type.lower() or
         'google' in module_name.lower()
     )
-    
+
     # Check for Google-specific resource exhaustion errors
     is_resource_exhausted = class_name in [
-        'ResourceExhausted', 
+        'ResourceExhausted',
         'GoogleGenerativeAIFetchError'
     ]
-    
+
     if is_google_exception and is_resource_exhausted:
         return True
-    
+
     # Check for specific Google API resource exhaustion patterns
     if 'google.api_core.exceptions.resourceexhausted' in exception_type.lower():
         return True
-    
+
     return False
 
 # NOTE: This may be out of date or not applicable to your models. Please update this as needed.
@@ -1243,10 +1245,10 @@ MODEL_TOKEN_LIMITS = {
 
 def get_model_token_limit(model_string):
     """Look up the token limit for a specific model.
-    
+
     Args:
         model_string: The model identifier string to look up
-        
+
     Returns:
         Token limit as integer if found, None if model not in lookup table
     """
@@ -1254,18 +1256,18 @@ def get_model_token_limit(model_string):
     for model_key, token_limit in MODEL_TOKEN_LIMITS.items():
         if model_key in model_string:
             return token_limit
-    
+
     # Model not found in lookup table
     return None
 
 def remove_up_to_last_ai_message(messages: list[MessageLikeRepresentation]) -> list[MessageLikeRepresentation]:
     """Truncate message history by removing up to the last AI message.
-    
+
     This is useful for handling token limit exceeded errors by removing recent context.
-    
+
     Args:
         messages: List of message objects to truncate
-        
+
     Returns:
         Truncated message list up to (but not including) the last AI message
     """
@@ -1274,7 +1276,7 @@ def remove_up_to_last_ai_message(messages: list[MessageLikeRepresentation]) -> l
         if isinstance(messages[i], AIMessage):
             # Return everything up to (but not including) the last AI message
             return messages[:i]
-    
+
     # No AI messages found, return original list
     return messages
 
@@ -1284,7 +1286,7 @@ def remove_up_to_last_ai_message(messages: list[MessageLikeRepresentation]) -> l
 
 def get_today_str() -> str:
     """Get current date formatted for display in prompts and outputs.
-    
+
     Returns:
         Human-readable date string in format like 'Mon Jan 15, 2024'
     """
@@ -1318,7 +1320,7 @@ def get_api_key_for_model(model_name: str, config: RunnableConfig):
             return api_keys.get("GOOGLE_API_KEY")
         return None
     else:
-        if model_name.startswith("openai:"): 
+        if model_name.startswith("openai:"):
             return os.getenv("OPENAI_API_KEY")
         elif model_name.startswith("anthropic:"):
             return os.getenv("ANTHROPIC_API_KEY")
@@ -1351,7 +1353,7 @@ def get_you_search_api_key(config: RunnableConfig):
 
 def use_you_deep_search_staging() -> bool:
     """Check if staging environment should be used for You.com Deep Search.
-    
+
     Returns:
         True if USE_YOU_DEEP_SEARCH_STAGING environment variable is set to 'true', False otherwise
     """
@@ -1359,18 +1361,18 @@ def use_you_deep_search_staging() -> bool:
 
 def get_you_deep_search_api_key(config: RunnableConfig):
     """Get You.com Deep Search API key from environment or config.
-    
+
     Uses staging API key if USE_YOU_DEEP_SEARCH_STAGING is enabled, otherwise uses production key.
-    
+
     Args:
         config: Runtime configuration for API key access
-        
+
     Returns:
         API key string if found, None otherwise
     """
     use_staging = use_you_deep_search_staging()
     key_name = "YOU_STAGING_API_KEY" if use_staging else "YOU_API_KEY"
-    
+
     should_get_from_config = os.getenv("GET_API_KEYS_FROM_CONFIG", "false")
     if should_get_from_config.lower() == "true":
         config_dict = config or {}
