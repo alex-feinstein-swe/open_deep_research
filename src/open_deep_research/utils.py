@@ -337,11 +337,11 @@ async def you_search_async(
         async def fetch(query: str):
             params = {
                 "query": query,
-                "count": max(1, max_results),
+                "count": max(5, max_results),
                 "livecrawl": livecrawl,
                 "livecrawl_formats": "markdown",
-                "num_bytes": 500000,
-                "skip_firecrawl": True
+                "num_bytes": 250000,
+                "skip_firecrawl": "true",
             }
             try:
                 async with session.get(base_url, headers=headers, params=params) as response:
